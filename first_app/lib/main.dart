@@ -1,39 +1,15 @@
 import 'package:flutter/material.dart';
 
+// 外部ファイルに切り出したカスタムウィジェットをインポート
+import 'package:first_app/gradient_container.dart';
+
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.amberAccent,
         body: GradientContainer(),
       ),
     ),
   );
-}
-
-class GradientContainer extends StatelessWidget {
-  @override
-  Widget build(context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 87, 9, 223),
-            Color.fromARGB(255, 201, 5, 229)
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: const Center(
-        child: Text(
-          'Hello World',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28.0,
-          ),
-        ),
-      ),
-    );
-  }
 }
