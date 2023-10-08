@@ -10,8 +10,9 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] 5. run the app on emulator (Mainly Android 13)
 - [x] 6. run the app on emulator (iOS 17.0)
 
-## Section 2: Flutter(Dart) Basics
+## Section 2: Flutter(Dart) Basics 1 - [Role Dice App]
 - [x] 7. Dart Basics
 - [x] 8. Flutter Basics
 
+## Section 3: Flutter(Dart) Basics 2 - [Quiz App]
 
