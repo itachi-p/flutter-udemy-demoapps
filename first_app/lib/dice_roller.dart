@@ -15,15 +15,15 @@ class DiceRoller extends StatefulWidget {
 // 慣行的にステートクラスの命名は「_{ステートフルウィジェット名}State」
 // _DiceRollerStateクラスはDiceRollerクラスの中でしか参照できない
 class _DiceRollerState extends State<DiceRoller> {
-  var activeDiceImage = 'assets/images/dice-2.png';
+  // ダイスの画像パスではなく、変化する「現在の出目」だけの変数に変更
+  var currentDiceRoll = 2;
 
   // ボタンを押されたら実行される関数を定義
   void rollDice() {
-    // ランダムな整数を生成
-    var diceRoll = Random().nextInt(6) + 1; // 1<>6の範囲でランダムな整数を生成
     // setState()を呼び出すことで、変化する状態を管理するクラスのbuild()が再実行される
     setState(() {
-      activeDiceImage = 'assets/images/dice-$diceRoll.png';
+      // これでも動作するが、diceRollの度に新しいRandomインスタンスを生成しており、メモリ最適化の観点上は無駄
+      currentDiceRoll = Random().nextInt(6) + 1; // 1〜6の乱数を生成
     });
   }
 
@@ -33,7 +33,8 @@ class _DiceRollerState extends State<DiceRoller> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          activeDiceImage,
+          // 表示する画像を動的に変更
+          'assets/images/dice-$currentDiceRoll.png',
           width: 200,
         ),
         const SizedBox(height: 20),
