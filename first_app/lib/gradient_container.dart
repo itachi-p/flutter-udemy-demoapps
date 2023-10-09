@@ -14,6 +14,11 @@ class GradientContainer extends StatelessWidget {
   final Color color1;
   final Color color2;
 
+  // ボタンを押されたら実行される関数を定義
+  void rollDice() {
+    // ...
+  }
+
   @override
   Widget build(context) {
     return Container(
@@ -25,11 +30,19 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Image.asset(
-          'assets/images/dice-5.png',
-          width: 200,
-        ),
-      ),
+          child: Column(
+        children: [
+          Image.asset(
+            'assets/images/dice-5.png',
+            width: 200,
+          ),
+          // ボタンを押されたら実行される関数を指定(実行ではなく、参照先の関数名を指定)
+          TextButton(
+            onPressed: rollDice,
+            child: const Text('Roll Dice'),
+          ),
+        ],
+      )),
     );
   }
 }
