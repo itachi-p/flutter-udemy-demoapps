@@ -22,7 +22,7 @@ class StartScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          OutlinedButton(
+          OutlinedButton.icon(
             onPressed: () {},
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
@@ -34,7 +34,8 @@ class StartScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(16)),
               ),
             ),
-            child: const Text('Start Quiz'),
+            icon: const Icon(Icons.play_arrow_rounded),
+            label: const Text('Start Quiz'),
           )
         ],
       ),
