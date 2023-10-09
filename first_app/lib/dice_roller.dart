@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-// 変化する状態を管理するクラス
+// 変化する状態を管理するクラス(ステートフルウィジェット)
 class DiceRoller extends StatefulWidget {
   const DiceRoller({super.key});
 
@@ -10,15 +11,19 @@ class DiceRoller extends StatefulWidget {
   }
 }
 
-// ステートフルウィジェットの状態を管理するクラス
+// ステートフルウィジェットの状態を管理する秘匿クラス(2つセットで定義)
+// 慣行的にステートクラスの命名は「_{ステートフルウィジェット名}State」
+// _DiceRollerStateクラスはDiceRollerクラスの中でしか参照できない
 class _DiceRollerState extends State<DiceRoller> {
   var activeDiceImage = 'assets/images/dice-2.png';
 
   // ボタンを押されたら実行される関数を定義
   void rollDice() {
+    // ランダムな整数を生成
+    var diceRoll = Random().nextInt(6) + 1; // 1<>6の範囲でランダムな整数を生成
     // setState()を呼び出すことで、変化する状態を管理するクラスのbuild()が再実行される
     setState(() {
-      activeDiceImage = 'assets/images/dice-4.png';
+      activeDiceImage = 'assets/images/dice-$diceRoll.png';
     });
   }
 
