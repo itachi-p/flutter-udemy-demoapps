@@ -12,7 +12,6 @@ class StartScreen extends StatelessWidget {
           Image.asset(
             'assets/images/quiz-logo.png',
             width: 300,
-            //不透明度を指定する方法3:Color.fromARGB()を使う
             color: const Color.fromARGB(150, 255, 255, 255),
           ),
           const SizedBox(height: 80),
@@ -25,7 +24,9 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              // ...
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               side: const BorderSide(
