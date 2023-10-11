@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  // QuizクラスのswitchScreen()メソッドを呼び出すためのポインタを受け取る
+  const StartScreen(this.startQuiz, {super.key});
+  // 受け取ったstartQuizをこのクラスでも関数として利用できるように紐付ける
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -24,9 +27,15 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           OutlinedButton.icon(
-            onPressed: () {
-              // ...
-            },
+            // ボタンが押される度にQuizクラスのswitchScreen()メソッドが呼び出される
+            // onPressed: () {
+            //   startQuiz();
+            // },
+            // 上記を以下のように簡略化できる
+            /* ※そもそもonPressed:が要求する型がvoid Function()型の関数定義なので、
+            startQuiz()とすると関数を実行した結果(void)を渡してしまうことになり、型が合わない */ 
+            onPressed: startQuiz, // この場合()は不要（関数が格納されたポインタを渡す）
+
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               side: const BorderSide(
