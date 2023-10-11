@@ -13,8 +13,20 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // 現在の表示画面(ウィジェット)を保持する変数:初期画面はStartScreen
-  Widget activeScreen = const StartScreen();
+  // 現在の表示画面(ウィジェット)を保持する変数
+  // initState()によって初期化される前の最初期値はNull許容型にするしかない
+  Widget? activeScreen;
+
+  // このクラスのインスタンスが生成された直後に1回だけ実行される初期化処理
+  @override
+  void initState() {
+    // これは先頭に置き、下手に触らない方が良い
+    super.initState();
+    // build()メソッドより前に、1回だけの初期化処理を実行する
+    // StartScreen内で使えるように、switchScreen()メソッドのポインタを引数で渡す
+    activeScreen = StartScreen(switchScreen);
+  }
+
   // setState()を利用してactiveScreenを更新するメソッド
   void switchScreen() {
     setState(() {
