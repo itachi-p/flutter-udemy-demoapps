@@ -13,24 +13,15 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // 現在の表示画面(ウィジェット)を保持する変数
-  // initState()によって初期化される前の最初期値はNull許容型にするしかない
-  Widget? activeScreen;
-
-  // このクラスのインスタンスが生成された直後に1回だけ実行される初期化処理
-  @override
-  void initState() {
-    // これは先頭に置き、下手に触らない方が良い
-    super.initState();
-    // build()メソッドより前に、1回だけの初期化処理を実行する
-    // StartScreen内で使えるように、switchScreen()メソッドのポインタを引数で渡す
-    activeScreen = StartScreen(switchScreen);
-  }
+  //Widget? activeScreen;
+  // 方法2:initState()を必要としないやり方
+  // 変数にウィジェットそのものを格納するのでなく、なんらかの識別子を保持する
+  String activeScreen = 'start-screen'; // 文字列でなくint型の数字でもOK
 
   // setState()を利用してactiveScreenを更新するメソッド
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -49,10 +40,10 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             )
             ),
-          // StartScreenウィジェットを固定で表示する場合
-          // child: const StartScreen(),
-          // activeScreen変数に格納されているウィジェットを表示する
-          child: activeScreen,
+          // 三項演算子:activeScreenの値に応じて表示するウィジェットを切り替える
+          child: activeScreen == 'start-screen'
+            ? StartScreen(switchScreen) // trueの場合
+            : const QuestionsScreen(), // false('questions-screen')の場合
         ),
       ),
     );
