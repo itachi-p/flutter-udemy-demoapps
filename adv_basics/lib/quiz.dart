@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:adv_basics/start_screen.dart';
+import 'package:adv_basics/questions_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -12,6 +13,15 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  // 現在の表示画面(ウィジェット)を保持する変数:初期画面はStartScreen
+  Widget activeScreen = const StartScreen();
+  // setState()を利用してactiveScreenを更新するメソッド
+  void switchScreen() {
+    setState(() {
+      activeScreen = const QuestionsScreen();
+    });
+  }
+
   @override
   Widget build(context) {
     return MaterialApp(
@@ -27,7 +37,10 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             )
             ),
-          child: const StartScreen(),
+          // StartScreenウィジェットを固定で表示する場合
+          // child: const StartScreen(),
+          // activeScreen変数に格納されているウィジェットを表示する
+          child: activeScreen,
         ),
       ),
     );
