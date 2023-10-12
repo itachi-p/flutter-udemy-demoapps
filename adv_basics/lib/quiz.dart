@@ -13,10 +13,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  //Widget? activeScreen;
-  // 方法2:initState()を必要としないやり方
-  // 変数にウィジェットそのものを格納するのでなく、なんらかの識別子を保持する
-  String activeScreen = 'start-screen'; // 文字列でなくint型の数字でもOK
+  String activeScreen = 'start-screen';
 
   // setState()を利用してactiveScreenを更新するメソッド
   void switchScreen() {
@@ -27,6 +24,13 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
+    // 画面切り替えの方法3:build()メソッドの最初で条件分岐する
+    // ウィジェット・ツリー内部で条件分岐を記述するより可読性が高い
+    Widget screenWidget = StartScreen(switchScreen);
+    if (activeScreen == 'questions-screen') {
+      screenWidget = const QuestionsScreen();
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -40,10 +44,8 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             )
             ),
-          // 三項演算子:activeScreenの値に応じて表示するウィジェットを切り替える
-          child: activeScreen == 'start-screen'
-            ? StartScreen(switchScreen) // trueの場合
-            : const QuestionsScreen(), // false('questions-screen')の場合
+          // インスタンス変数screenWidgetにより画面切り替えを実現する
+          child: screenWidget,
         ),
       ),
     );

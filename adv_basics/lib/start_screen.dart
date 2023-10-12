@@ -28,13 +28,7 @@ class StartScreen extends StatelessWidget {
           const SizedBox(height: 30),
           OutlinedButton.icon(
             // ボタンが押される度にQuizクラスのswitchScreen()メソッドが呼び出される
-            // onPressed: () {
-            //   startQuiz();
-            // },
-            // 上記を以下のように簡略化できる
-            /* ※そもそもonPressed:が要求する型がvoid Function()型の関数定義なので、
-            startQuiz()とすると関数を実行した結果(void)を渡してしまうことになり、型が合わない */ 
-            onPressed: startQuiz, // この場合()は不要（関数が格納されたポインタを渡す）
+            onPressed: startQuiz, // 関数の実行結果でなく、関数定義が格納されたポインタを渡す
 
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
