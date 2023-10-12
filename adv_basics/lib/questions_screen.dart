@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:adv_basics/answer_button.dart';
+
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
 
@@ -19,21 +21,24 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         // 縦軸の中央に配置する
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('The questions...'),
+          const Text(
+            'The questions...',
+            style: TextStyle(color: Colors.white),
+          ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Answer 1'),
+          // 回答ボタンウィジェットにonTapped()メソッドを渡す
+          AnswerButton(
+            answerText: 'Answer 1',
+            onTapped: () {},
           ),
-                  ElevatedButton(
-            onPressed: () {},
-            child: const Text('Answer 2'),
+          AnswerButton(
+            answerText: 'Answer 2',
+            onTapped: () {},
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Answer 3'),
+          AnswerButton(
+            answerText: 'Answer 3',
+            onTapped: () {},
           ),
-    
         ],
       ),
     );
