@@ -16,6 +16,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   // Stateとして現在の問題番号を保持し、番号に応じた問題を取得する
   int currentQuestionIndex = 0;
   // 回答が選ばれたらその回答番号を保存し、次の問題に進む
+  // (現時点では回答の保存と最後の問題に達した時の処理は実装していない)
   void answerQuestion() {
     setState(() {
       currentQuestionIndex++;
