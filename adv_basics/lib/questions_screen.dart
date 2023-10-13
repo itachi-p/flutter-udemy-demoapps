@@ -13,10 +13,19 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  // Stateとして現在の問題番号を保持し、番号に応じた問題を取得する
+  int currentQuestionIndex = 0;
+  // 回答が選ばれたらその回答番号を保存し、次の問題に進む
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(context) {
     // クイズデータにアクセスする
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       // できるだけ横幅いっぱいに広げる
@@ -44,7 +53,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
-                onTapped: () {},
+                onTapped: answerQuestion,
               );
             }),
           ],
