@@ -30,19 +30,15 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 30),
-          // 回答ボタンウィジェットにonTapped()メソッドを渡す
-          AnswerButton(
-            answerText: currentQuestion.answers[0],
-            onTapped: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[1],
-            onTapped: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[2],
-            onTapped: () {},
-          ),
+          // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換する
+          // さらに、childrenが求めているのはList型ではなく単一のウィジェットなので、
+          // map()メソッドの戻り値であるリスト(厳密にはIterable型)を...演算子で展開する
+          ...currentQuestion.answers.map((answer) {
+            return AnswerButton(
+              answerText: answer,
+              onTapped: () {},
+            );
+          }),
         ],
       ),
     );
