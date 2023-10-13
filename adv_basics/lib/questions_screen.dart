@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:adv_basics/answer_button.dart';
+import 'package:adv_basics/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -14,6 +15,9 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(context) {
+    // クイズデータにアクセスする
+    final currentQuestion = questions[0];
+
     return SizedBox(
       // できるだけ横幅いっぱいに広げる
       width: double.infinity,
@@ -21,22 +25,22 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         // 縦軸の中央に配置する
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'The questions...',
-            style: TextStyle(color: Colors.white),
+          Text(
+            currentQuestion.question,
+            style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 30),
           // 回答ボタンウィジェットにonTapped()メソッドを渡す
           AnswerButton(
-            answerText: 'Answer 1',
+            answerText: currentQuestion.answers[0],
             onTapped: () {},
           ),
           AnswerButton(
-            answerText: 'Answer 2',
+            answerText: currentQuestion.answers[1],
             onTapped: () {},
           ),
           AnswerButton(
-            answerText: 'Answer 3',
+            answerText: currentQuestion.answers[2],
             onTapped: () {},
           ),
         ],

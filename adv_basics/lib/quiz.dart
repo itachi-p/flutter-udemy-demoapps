@@ -24,8 +24,6 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
-    // 画面切り替えの方法3:build()メソッドの最初で条件分岐する
-    // ウィジェット・ツリー内部で条件分岐を記述するより可読性が高い
     Widget screenWidget = StartScreen(switchScreen);
     if (activeScreen == 'questions-screen') {
       screenWidget = const QuestionsScreen();

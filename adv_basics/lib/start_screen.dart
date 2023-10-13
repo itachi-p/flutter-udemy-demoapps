@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  // QuizクラスのswitchScreen()メソッドを呼び出すためのポインタを受け取る
+  // コンストラクタ引数でQuizクラスのswitchScreen()メソッドを呼び出すポインタを受け取る
   const StartScreen(this.startQuiz, {super.key});
-  // 受け取ったstartQuizをこのクラスでも関数として利用できるように紐付ける
+  // 受け取ったstartQuiz(switchScreen())をこのクラスでも関数として利用できるよう紐付ける
   final void Function() startQuiz;
 
   @override
