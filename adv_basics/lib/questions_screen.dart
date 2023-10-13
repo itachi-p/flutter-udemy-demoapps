@@ -38,10 +38,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換する
-            // さらに、childrenが求めているのはList型ではなく単一のウィジェットなので、
-            // map()メソッドの戻り値であるリスト(厳密にはIterable型)を...演算子で展開する
-            ...currentQuestion.answers.map((answer) {
+            // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換し、展開する
+            // 更にランダムに並び替えたいが、shuffle()メソッドは元のリストを上書きしてしまう
+            // 正解が確認できなくなるので、元のクラス側で回答群のコピーをシャッフルするメソッドを実装する
+            ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
                 onTapped: () {},
