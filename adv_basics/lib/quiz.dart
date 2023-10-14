@@ -32,12 +32,7 @@ class _QuizState extends State<Quiz> {
     selectedAnswers.add(answer);
 
     // 回答群リストの数が問題と同じ数に達したら、結果画面に遷移する
-    if (selectedAnswers.length == questions.length) {
-      // 2周目以降selectedAnswersが累積しないよう、finalを取り除き初期化する
-      // selectedAnswers = []; // メモリ再割り当てが必要な為finalだとエラー
-      // と、動画で講師は説明しているが、finalのままでもリセットは可能
-      selectedAnswers.clear(); // こっちの方がよいのでは？
-      
+    if (selectedAnswers.length == questions.length) {      
       setState(() {
         activeScreen = 'result-screen';
       });
@@ -55,7 +50,9 @@ class _QuizState extends State<Quiz> {
     }
     // TODO 動画では講師は何故かここでelseを使っていない。
     if (activeScreen == 'result-screen') {
-      screenWidget = const ResultsScreen();
+      screenWidget = ResultsScreen(chosenAnswers: selectedAnswers,);
+      // クイズ2周目以降でselectedAnswersが累積しないよう初期化
+      selectedAnswers.clear();
     }
 
     return MaterialApp(
