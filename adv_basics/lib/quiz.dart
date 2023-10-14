@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:adv_basics/start_screen.dart';
 import 'package:adv_basics/questions_screen.dart';
+// クイズの質問総数を取得するために、questions.dartをインポートする
+import 'package:adv_basics/data/questions.dart';
+import 'package:adv_basics/result_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -28,6 +31,18 @@ class _QuizState extends State<Quiz> {
   // ユーザが選択した回答を回答群リストに追加するメソッド
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
+
+    // 回答群リストの数が問題と同じ数に達したら、結果画面に遷移する
+    if (selectedAnswers.length == questions.length) {
+      // selectedAnswersが累積しないように、finalを取り除き初期化する
+      // selectedAnswers = [];
+      // と、動画で講師は説明しているが、finalのままでもリセットは可能
+      selectedAnswers.clear();
+      
+      setState(() {
+        activeScreen = 'result-screen';
+      });
+    }
   }
 
   @override
@@ -38,6 +53,8 @@ class _QuizState extends State<Quiz> {
       screenWidget = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
+    } else if (activeScreen == 'result-screen') {
+      screenWidget = ResultScreen(selectedAnswers);
     }
 
     return MaterialApp(
