@@ -15,11 +15,18 @@ class QuestionsSummary extends StatelessWidget {
       // map()メソッドの引数は、リストの要素を1つずつ受け取る無名関数
       children: summaryData.map(
         (data) {
-        // 横長に並べる
+        // 横長に並べる(Columnの中に入れ子でRowを作成する)
         return Row(children: [
           // Map<String, Object>のKeyを指定し、Valueを適切な型にキャストする
           // 問題番号は0から始まる数値なので、1を足した後で文字列に変換する
           Text(((data['question_index'] as int) + 1).toString()),
+          // 縦→横→縦とさらに入れ子にする(Column>Row>Column)
+          Column(children: [
+            Text(data['question_text'] as String),
+            const SizedBox(height: 5),
+            Text(data['user_answer'] as String),
+            Text(data['correct_answer'] as String),
+          ],),
         ],);
         // 厳密には戻り値がIterable<Widget>なので、toList()でList型ïに変換する
       },).toList(),

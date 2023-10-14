@@ -1,3 +1,4 @@
+import 'package:adv_basics/questions_summary.dart';
 import 'package:flutter/material.dart';
 
 import 'package:adv_basics/data/questions.dart';
@@ -9,9 +10,9 @@ class ResultsScreen extends StatelessWidget {
   });
   final List<String> chosenAnswers;
 
-  // 答え合わせの為に問題文のリストを取得するメソッド
+  // 答え合わせの為に問題文のリストを取得するメソッド(※引数不要)
   // 戻り値は<Key: 項目名, Value: 複数の型の混在>のMapのリスト
-  List<Map<String, Object>> getSummaryData(chosenAnswers) {
+  List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
       // Key(String型)とValueのペアからなるMapを作成し、リストに追加
@@ -37,15 +38,20 @@ class ResultsScreen extends StatelessWidget {
           children: [
             // 上でサマリーが用意できたので、以下のダミーウィジェットを置き換えていく
             // しかしウィジェット・ツリーがかなり複雑になるので、小さなブロックに分割する
-            // 何問正解したかを示すテキスト（仮）
+
+            // TODO: 何問正解したかを示すテキスト（仮）
             const Text('You answered X out of Y questions correctly!'),
             const SizedBox(height: 30),
-            // トップのタイトルと戻るボタンの間でスクロール可能なウィジェット(仮)
-            const Text('List of answers and questions...'),
+            QuestionsSummary(
+              getSummaryData(),
+            ),
             const SizedBox(height: 30),
-            // 戻るボタン
+            // TODO:戻るボタン(機能未実装)
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                // 2周目以降でselectedAnswersが累積しないよう、初期化する
+                // selectedAnswers.clear();
+              },
               child: const Text('Restart Quiz!'),
             ),
           ],
