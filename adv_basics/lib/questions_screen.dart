@@ -68,7 +68,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                   // 選択された回答をQuizクラスのchooseAnswer()メソッドに渡す
                   answerQuestion(answer),
                 },
-
               );
             }),
           ],
