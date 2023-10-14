@@ -15,33 +15,43 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   String activeScreen = 'start-screen';
 
-  // setState()を利用してactiveScreenを更新するメソッド
+  // ユーザが選択した回答群を保持するリスト
+  final List<String> selectedAnswers = [];
+
+  // setState()を利用して表示画面を更新するメソッド
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
     });
   }
 
+  // ユーザが選択した回答を回答群リストに追加するメソッド
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen);
     if (activeScreen == 'questions-screen') {
-      screenWidget = const QuestionsScreen();
+      // コンストラクタ引数でchooseAnswer()メソッド(のポインタ)を渡す
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+      );
     }
 
     return MaterialApp(
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 68, 5, 113),
-                Color.fromARGB(255, 198, 28, 201),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            )
-            ),
+              gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 68, 5, 113),
+              Color.fromARGB(255, 198, 28, 201),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          )),
           // インスタンス変数screenWidgetにより画面切り替えを実現する
           child: screenWidget,
         ),

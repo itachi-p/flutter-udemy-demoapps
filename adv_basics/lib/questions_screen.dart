@@ -5,8 +5,12 @@ import 'package:adv_basics/answer_button.dart';
 import 'package:adv_basics/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
-
+  // コンストラクタ引数でQuizクラスのchooseAnswer()メソッドのポインタを受け取る
+  //const QuestionsScreen(this.onSelectAnswer, {super.key});
+  // 位置引数でも実現するが、Flutterの慣習に従い、名前付き引数で実装する
+  const QuestionsScreen({super.key, required this.onSelectAnswer});
+  final void Function(String answer) onSelectAnswer; 
+  
   @override
   State<QuestionsScreen> createState() {
     return _QuestionsScreenState();
@@ -17,8 +21,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   // Stateとして現在の問題番号を保持し、番号に応じた問題を取得する
   int currentQuestionIndex = 0;
   // 回答が選ばれたらその回答番号を保存し、次の問題に進む
-  // (現時点では回答の保存と最後の問題に達した時の処理は実装していない)
-  void answerQuestion() {
+  void answerQuestion(String selectedAnswer) {
+    // StateクラスからStatefulWidgetクラスのメンバにアクセスする
+    widget.onSelectAnswer(selectedAnswer);
+
     setState(() {
       currentQuestionIndex++;
     });
@@ -53,12 +59,16 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 30),
             // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換し、展開する
-            // 更にランダムに並び替えたいが、shuffle()メソッドは元のリストを上書きしてしまう
-            // 正解が確認できなくなるので、元のクラス側で回答群のコピーをシャッフルするメソッドを実装する
             ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
-                onTapped: answerQuestion,
+                //onTapped: answerQuestion,
+                // onTappedは引数なしの関数を要求するので匿名関数に置き換える
+                onTapped: () => {
+                  // 選択された回答をQuizクラスのchooseAnswer()メソッドに渡す
+                  answerQuestion(answer),
+                },
+
               );
             }),
           ],
