@@ -21,12 +21,15 @@ class QuestionsSummary extends StatelessWidget {
           // 問題番号は0から始まる数値なので、1を足した後で文字列に変換する
           Text(((data['question_index'] as int) + 1).toString()),
           // 縦→横→縦とさらに入れ子にする(Column>Row>Column)
-          Column(children: [
-            Text(data['question_text'] as String),
-            const SizedBox(height: 5),
-            Text(data['user_answer'] as String),
-            Text(data['correct_answer'] as String),
-          ],),
+          // はみ出るので、Expandedでスクロール可能にする
+          Expanded(
+            child: Column(children: [
+              Text(data['question_text'] as String),
+              const SizedBox(height: 5),
+              Text(data['user_answer'] as String),
+              Text(data['correct_answer'] as String),
+            ],),
+          ),
         ],);
         // 厳密には戻り値がIterable<Widget>なので、toList()でList型ïに変換する
       },).toList(),
