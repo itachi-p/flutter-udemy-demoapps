@@ -29,6 +29,15 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 結果画面を動的に生成する為に、サマリーデータを取得する
+    final summaryData = getSummaryData();
+    final numTotalQuestions = questions.length;
+    // where()メソッドを使って、条件に合致する(true)要素のみを抽出する
+    final numCorrectAnswers = summaryData.where((data) {
+      // ユーザの回答と正解が一致するかどうかを判定し、一致するものだけを抽出
+      return data['user_answer'] == data['correct_answer'];
+    }).length; // 抽出した要素の数を取得する
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -40,11 +49,12 @@ class ResultsScreen extends StatelessWidget {
             // しかしウィジェット・ツリーがかなり複雑になるので、小さなブロックに分割する
 
             // TODO: 何問正解したかを示すテキスト（仮）
-            const Text('You answered X out of Y questions correctly!'),
-            const SizedBox(height: 30),
-            QuestionsSummary(
-              getSummaryData(),
+            Text(
+              'You answered $numCorrectAnswers out of $numTotalQuestions questions correctly!',
             ),
+            const SizedBox(height: 30),
+            // 上で関数を呼び出しサマリーデータを取得したので、それを再利用する
+            QuestionsSummary(summaryData),
             const SizedBox(height: 30),
             // TODO:戻るボタン(機能未実装)
             TextButton(
