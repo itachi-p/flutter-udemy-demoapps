@@ -48,10 +48,17 @@ class _QuizState extends State<Quiz> {
         onSelectAnswer: chooseAnswer,
       );
     }
-    // TODO 動画では講師は何故かここでelseを使っていない。
+    // 講師はここでelseを使っていない
     if (activeScreen == 'result-screen') {
       screenWidget = ResultsScreen(
         chosenAnswers: selectedAnswers,
+        onRestart: () {
+          setState(() {
+            activeScreen = 'start-screen';
+            // ユーザが選択した回答群をリセットする
+            selectedAnswers.clear();
+          });
+        },
       );
     }
 

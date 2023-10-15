@@ -8,8 +8,16 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
+    // スタート画面に戻る為のコールバック関数を引数に追加
+    required this.onRestart,
   });
+
   final List<String> chosenAnswers;
+  // 戻るボタンを押した時に呼び出すコールバック関数
+  // VoidCallback型は引数なしで戻り値がvoidの関数を表す型
+  // 以下でも同じ意味
+  // final void Function() onRestart;
+  final VoidCallback onRestart;
 
   // 答え合わせの為に問題文のリストを取得するメソッド(引数不要)
   // 戻り値は<Key: 項目名, Value: 複数の型の混在>のMapのリスト
@@ -26,13 +34,6 @@ class ResultsScreen extends StatelessWidget {
       });
     }
     return summary;
-  }
-
-  // 戻るボタンを押した時に呼び出されるメソッド
-  void onRestart() {
-    // ユーザが選択した回答群をリセットする
-
-    // setState()を呼び出して、表示画面を更新する
   }
 
   @override
