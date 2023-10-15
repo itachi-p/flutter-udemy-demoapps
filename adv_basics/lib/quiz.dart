@@ -39,26 +39,33 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  // 結果画面からスタート画面に戻る処理
+  void restartQuiz() {
+    setState(() {
+      // ユーザが選択した回答群をリセットする
+      // finalを削除して=[]を再代入するより、この方が良さげ
+      selectedAnswers.clear();
+      activeScreen = 'start-screen';
+    });
+  }
+
   @override
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen);
+    
     if (activeScreen == 'questions-screen') {
       // コンストラクタ引数でchooseAnswer()メソッド(のポインタ)を渡す
       screenWidget = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
     }
-    // 講師はここでelseを使っていない
+
+    else // 講師はここでelseを書いていないが、挙動は同じ
     if (activeScreen == 'result-screen') {
       screenWidget = ResultsScreen(
         chosenAnswers: selectedAnswers,
-        onRestart: () {
-          setState(() {
-            activeScreen = 'start-screen';
-            // ユーザが選択した回答群をリセットする
-            selectedAnswers.clear();
-          });
-        },
+        // ここに直接ロジックを書かず、build()メソッドの外に定義
+        onRestart: restartQuiz,
       );
     }
 
