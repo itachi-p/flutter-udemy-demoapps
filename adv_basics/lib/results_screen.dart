@@ -1,4 +1,4 @@
-import 'package:adv_basics/questions_summary.dart';
+import 'package:adv_basics/questions_summary/questions_summary.dart';
 import 'package:flutter/material.dart';
 
 import 'package:adv_basics/data/questions.dart';
@@ -48,7 +48,6 @@ class ResultsScreen extends StatelessWidget {
             // 上でサマリーが用意できたので、以下のダミーウィジェットを置き換えていく
             // しかしウィジェット・ツリーがかなり複雑になるので、小さなブロックに分割する
 
-            // TODO: 何問正解したかを示すテキスト（仮）
             Text(
               'You answered $numCorrectAnswers out of $numTotalQuestions questions correctly!',
             ),
@@ -60,9 +59,19 @@ class ResultsScreen extends StatelessWidget {
             TextButton(
               onPressed: () {
                 // 2周目以降でselectedAnswersが累積しないよう、初期化する
-                // selectedAnswers.clear();
+                
+                // スタート画面に戻る
+                
               },
-              child: const Text('Restart Quiz!'),
+              // 戻るボタンのテキストの左側にはアイコンを表示する
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.replay_rounded),
+                  SizedBox(width: 10),
+                  Text('Restart Quiz!'),                    
+                ],
+              ),
             ),
           ],
         ),

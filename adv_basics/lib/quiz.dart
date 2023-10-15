@@ -67,7 +67,6 @@ class _QuizState extends State<Quiz> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           )),
-          // インスタンス変数screenWidgetにより画面切り替えを実現する
           child: screenWidget,
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:adv_basics/questions_summary/question_identifier.dart';
+
 class QuestionsSummary extends StatelessWidget {
 // results_screenのsummaryをここに移植する
   const QuestionsSummary(this.summaryData, {super.key});
@@ -17,18 +19,28 @@ class QuestionsSummary extends StatelessWidget {
           // map()メソッドの引数は、リストの要素を1つずつ受け取る無名関数
           children: summaryData.map(
             (data) {
-              // 横長に並べる(Columnの中に入れ子でRowを作成する)
+              // ユーザの回答と正解が一致するかどうかを判定し、変数に格納
+              final isCorrectAnswer =
+                  data['user_answer'] == data['correct_answer'];
+
               return Row(
                 children: [
                   // Map<String, Object>のKeyを指定し、Valueを適切な型にキャストする
-                  Text(((data['question_index'] as int) + 1).toString()),
+
+                  // 正解の場合は青色、不正解の場合は赤色の丸で囲まれた問題番号を表示する
+                  QuestionIdentifier(
+                    questionIndex: data['question_index'] as int,
+                    isCorrectAnswer: isCorrectAnswer,
+                  ),
+                  const SizedBox(width: 10),
                   // 縦→横→縦とさらに入れ子にする(Column>Row>Column)
                   Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(data['question_text'] as String,
                             style: GoogleFonts.lato(
-                              color: const Color.fromARGB(255, 224, 126, 244),
+                              color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             )),
@@ -44,8 +56,8 @@ class QuestionsSummary extends StatelessWidget {
                   ),
                 ],
               );
-              // 厳密には戻り値がIterable<Widget>なので、toList()でList型ïに変換する
             },
+            // 厳密には戻り値がIterable<Widget>なので、toList()でList型に変換する
           ).toList(),
         ),
       ),
