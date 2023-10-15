@@ -9,19 +9,21 @@ class QuestionsSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Mapオブジェクトのリストから、ウィジェットのリストに変換する
     return SizedBox(
       // 高さを固定した上で、スクロール可能にする
-      height: 300,
+      height: 400,
       child: SingleChildScrollView(
         child: Column(
-          children:
-              // map()メソッドの引数は、リストの要素を1つずつ取り出し処理する無名関数
-              // 要素を1つづつ引数dataとして渡し、SummaryItem(data)の戻り値をリストに追加する
-              summaryData
-                  .map((data) => SummaryItem(data))
-                  // 厳密にはmap()の戻り値はIterable型なので、List型への変換が必要
-                  .toList(),
+          // map()メソッドの引数は、リストの要素を1つずつ取り出し処理する無名関数
+          // 要素を順に渡し、戻り値をリストに追加する
+          children: summaryData.map(
+            (data) {
+              return SummaryItem(data);
+            },
+            // 厳密にはmap()の戻り値はIterable型なので、List型への変換が必要
+          ).toList(),
+          // 上記の省略形(引数名はdata, element等なんでもいい)
+          // children: summaryData.map((e) => SummaryItem(e)).toList(),
         ),
       ),
     );

@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:adv_basics/questions_summary/question_identifier.dart';
 
+// サマリーの1行(横軸)分のデータを表示するウィジェット
+// 元のList<Map<String, Object>>のMapの1要素を順に引数に取る
 class SummaryItem extends StatelessWidget {
   const SummaryItem(this.itemData, {super.key});
   // Object型のValueに対しては、取り出す際に適切な型へキャストが必要
@@ -15,7 +17,7 @@ class SummaryItem extends StatelessWidget {
         itemData['user_answer'] == itemData['correct_answer'];
 
     return Row(
-      // 縦軸の先頭(左端)に配置する
+      // 縦軸の先頭(上端)に配置する
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 正解の場合は青色、不正解の場合は赤色の丸で囲まれた問題番号を表示する
@@ -24,9 +26,10 @@ class SummaryItem extends StatelessWidget {
           isCorrectAnswer: isCorrectAnswer,
         ),
         const SizedBox(width: 20),
-        // 縦→横→縦とさらに入れ子にする(Column>Row>Column)
+        // 問題文と回答を表示する(全体が表示されるようにExpandedで囲む)
         Expanded(
           child: Column(
+            // 横軸の先頭(左端)に配置する
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(itemData['question_text'] as String,
@@ -36,12 +39,14 @@ class SummaryItem extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   )),
               const SizedBox(height: 5),
-              Text(
-                itemData['user_answer'] as String,
-                style: const TextStyle(color: Colors.green),
-              ),
+              Text(itemData['user_answer'] as String,
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 194, 164, 229),
+                  )),
               Text(itemData['correct_answer'] as String,
-                  style: const TextStyle(color: Colors.lightBlue)),
+                  style: const TextStyle(
+                    color: Colors.lightBlue,
+                  )),
             ],
           ),
         ),

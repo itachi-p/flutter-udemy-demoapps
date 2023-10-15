@@ -1,7 +1,8 @@
-import 'package:adv_basics/questions_summary/questions_summary.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:adv_basics/data/questions.dart';
+import 'package:adv_basics/questions_summary/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -10,7 +11,7 @@ class ResultsScreen extends StatelessWidget {
   });
   final List<String> chosenAnswers;
 
-  // 答え合わせの為に問題文のリストを取得するメソッド(※引数不要)
+  // 答え合わせの為に問題文のリストを取得するメソッド(引数不要)
   // 戻り値は<Key: 項目名, Value: 複数の型の混在>のMapのリスト
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -25,6 +26,13 @@ class ResultsScreen extends StatelessWidget {
       });
     }
     return summary;
+  }
+
+  // 戻るボタンを押した時に呼び出されるメソッド
+  void onRestart() {
+    // ユーザが選択した回答群をリセットする
+
+    // setState()を呼び出して、表示画面を更新する
   }
 
   @override
@@ -45,33 +53,27 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 上でサマリーが用意できたので、以下のダミーウィジェットを置き換えていく
-            // しかしウィジェット・ツリーがかなり複雑になるので、小さなブロックに分割する
-
             Text(
               'You answered $numCorrectAnswers out of $numTotalQuestions questions correctly!',
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
             // 上で関数を呼び出しサマリーデータを取得したので、それを再利用する
             QuestionsSummary(summaryData),
             const SizedBox(height: 30),
-            // TODO:戻るボタン(機能未実装)
-            TextButton(
-              onPressed: () {
-                // 2周目以降でselectedAnswersが累積しないよう、初期化する
-                
-                // スタート画面に戻る
-                
-              },
-              // 戻るボタンのテキストの左側にはアイコンを表示する
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.replay_rounded),
-                  SizedBox(width: 10),
-                  Text('Restart Quiz!'),                    
-                ],
+            // 戻るボタンを実装、テキストの左側にはアイコンを表示する
+            TextButton.icon(
+              onPressed: onRestart,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
               ),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Restart Quiz!'),
             ),
           ],
         ),
