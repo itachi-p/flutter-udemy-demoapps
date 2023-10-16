@@ -44,7 +44,7 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ... to Section 14
 
-### What I'll learn later
+### What I'll learn later (As of October 16, 2023)
 
 - Debugging tips & tricks
 - Page navigation with tabs, side drawers, and stack-based navigation

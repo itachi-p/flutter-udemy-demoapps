@@ -23,15 +23,15 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   void answerQuestion(String selectedAnswer) {
     widget.onSelectAnswer(selectedAnswer);
-    // currentQuestionIndex = currentQuestionIndex + 1;
-    // currentQuestionIndex += 1;
     setState(() {
-      currentQuestionIndex++; // increments the value by 1
+      currentQuestionIndex++;
     });
   }
 
   @override
   Widget build(context) {
+    // TODO: Fix this 'currentQuestionIndex' variable to be 0-based
+    // エラーの原因は、currentQuestionIndexが2周目で5になっていること
     final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(

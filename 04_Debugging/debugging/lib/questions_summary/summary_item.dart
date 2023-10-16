@@ -22,7 +22,9 @@ class SummaryItem extends StatelessWidget {
         children: [
           QuestionIdentifier(
             isCorrectAnswer: isCorrectAnswer,
-            questionIndex: itemData['question'] as int,
+            // Resolved: Fix this to use the 'question_index' key
+            // questionIndex: itemData['question'] as int,
+            questionIndex: itemData['question_index'] as int,
           ),
           const SizedBox(width: 20),
           Expanded(

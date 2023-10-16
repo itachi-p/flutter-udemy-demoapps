@@ -28,7 +28,7 @@ class StartScreen extends StatelessWidget {
           Text(
             'This is for learning how to debug!',
             style: GoogleFonts.lato(
-              color: const Color.fromARGB(255, 237, 223, 252),
+              color: const Color.fromARGB(255, 223, 19, 50),
               fontSize: 24,
             ),
           ),
