@@ -8,10 +8,13 @@ class QuizQuestion {
   final List<String> answers;
 
   // 回答群をランダムに並び替えるメソッド
-  List<String> getShuffledAnswers() {
+  /* Advance2-2a:
+  Dartのget構文を利用し、ゲッターとして書き換える
+  */
+  List<String> get shuffledAnswers {
+  // List<String> getShuffledAnswers() {
     // 常に回答群の最初が正解という仕様なので、元の並び順は保持したい
-    // まずanswersのコピーリストを作成し、それに対してshuffle()メソッドを実行する
-    // なおfinalは変数の再代入(メモリ再割り当て)を禁止するだけで、リスト要素の変更は許可されている
+    // まずanswersのコピーを作成し、それに対しshuffle()メソッドを実行する
     final shuffledList = List.of(answers);
     // void shuffle()で結果を返さないので、そのまま=では代入できない
     shuffledList.shuffle();

@@ -18,7 +18,11 @@ class _QuizState extends State<Quiz> {
   String activeScreen = 'start-screen';
 
   // ユーザが選択した回答群を保持するリスト
-  final List<String> selectedAnswers = [];
+  /* Advance1:
+  Stateクラス自体がprivateなので不要だが、プライベート変数にもできる
+  今後privateでないクラス内で、変数や関数に対し適切に設定すべき
+  */
+  final List<String> _selectedAnswers = [];
 
   // setState()を利用して表示画面を更新するメソッド
   void switchScreen() {
@@ -29,10 +33,10 @@ class _QuizState extends State<Quiz> {
 
   // ユーザが選択した回答を回答群リストに追加するメソッド
   void chooseAnswer(String answer) {
-    selectedAnswers.add(answer);
+    _selectedAnswers.add(answer);
 
     // 回答群リストの数が問題と同じ数に達したら、結果画面に遷移する
-    if (selectedAnswers.length == questions.length) {
+    if (_selectedAnswers.length == questions.length) {
       setState(() {
         activeScreen = 'result-screen';
       });
@@ -44,7 +48,7 @@ class _QuizState extends State<Quiz> {
     setState(() {
       // ユーザが選択した回答群をリセットする
       // finalを削除して=[]を再代入するより、この方が良さげ
-      selectedAnswers.clear();
+      _selectedAnswers.clear();
       activeScreen = 'start-screen';
     });
   }
@@ -52,7 +56,7 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen);
-    
+
     if (activeScreen == 'questions-screen') {
       // コンストラクタ引数でchooseAnswer()メソッド(のポインタ)を渡す
       screenWidget = QuestionsScreen(
@@ -63,7 +67,7 @@ class _QuizState extends State<Quiz> {
     else // 講師はここでelseを書いていないが、挙動は同じ
     if (activeScreen == 'result-screen') {
       screenWidget = ResultsScreen(
-        chosenAnswers: selectedAnswers,
+        chosenAnswers: _selectedAnswers,
         // ここに直接ロジックを書かず、build()メソッドの外に定義
         onRestart: restartQuiz,
       );
