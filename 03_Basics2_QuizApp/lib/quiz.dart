@@ -62,9 +62,7 @@ class _QuizState extends State<Quiz> {
       screenWidget = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
-    }
-
-    else // 講師はここでelseを書いていないが、挙動は同じ
+    } else // 講師はここでelseを書いていないが、挙動は同じ
     if (activeScreen == 'result-screen') {
       screenWidget = ResultsScreen(
         chosenAnswers: _selectedAnswers,
@@ -77,14 +75,15 @@ class _QuizState extends State<Quiz> {
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 68, 5, 113),
-              Color.fromARGB(255, 198, 28, 201),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          )),
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 68, 5, 113),
+                Color.fromARGB(255, 198, 28, 201),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
           child: screenWidget,
         ),
       ),
