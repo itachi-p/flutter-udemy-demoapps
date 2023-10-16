@@ -58,8 +58,14 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換し、展開する
-            ...currentQuestion.getShuffledAnswers().map((answer) {
+
+            // 回答群の文字列リストをAnswerButtonウィジェットのリストに変換し、展開
+            /* Advance2-2b:
+            get構文で再定義したので、呼び出し元でプロパティのようにアクセスできる
+            正直ここでは然程メリットはないが、プロパティのように扱える恩恵は大きい
+            */
+            ...currentQuestion.shuffledAnswers.map((answer) {
+            // ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
                 //onTapped: answerQuestion,
