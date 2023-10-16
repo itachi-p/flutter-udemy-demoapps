@@ -13,10 +13,8 @@ class ResultsScreen extends StatelessWidget {
   });
 
   final List<String> chosenAnswers;
-  // 戻るボタンを押した時に呼び出すコールバック関数
-  // VoidCallback型は引数なしで戻り値がvoidの関数を表す型
-  // 以下でも同じ意味
   // final void Function() onRestart;
+  // 以下も同じ。VoidCallback型は引数と戻り値がない関数の型
   final VoidCallback onRestart;
 
   // 答え合わせの為に問題文のリストを取得するメソッド(引数不要)
