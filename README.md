@@ -58,7 +58,7 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] Filtering & Analyzing Lists
 - [x] Making content scrollable
 
-## Section 4: Debugging Flutter Apps
+## Section 4: Debugging Flutter Apps (Using Debug Tools)
 
 - [x] Debugging apps & Using debug mode
 - [x] Working with the Flutter DevTools
@@ -72,7 +72,13 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [ ] Running the app on a physical devices(on Android)
 - [ ] Running the app on a physical devices(on iOS)
 
-## Section 5: Adding Interactivity, More Widgets & Theming
+## Section 5: Adding Interactivity, More Widgets & Theming [Expense Tracker App]
+- [ ] Implementation of Modal Overlays
+- [ ] List & Chart
+- [ ] Using Flutter Themes
+- [ ] _Handling and validating user input_
+- [ ] _Connecting Flutter app to backend servers_ by sending HTTP requests
+- [ ] _User authentication_
 
 ## Section 6: Building Responsive & Adaptive User Interfaces
 
@@ -80,14 +86,10 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ... to Section 14
 
-### What I'll learn later (As of October 16, 2023)
+### What I'll learn later (As of October 18, 2023)
 
-- Debugging tips & tricks
 - Page navigation with tabs, side drawers, and stack-based navigation
 - State management solutions
-- _Handling and validating user input_
-- _Connecting Flutter app to backend servers_ by sending HTTP requests
-- _User authentication_
 - **Adding Google Maps**
 - **Using native device features like the camera**
 - _Adding beautiful animations & page transitions_
