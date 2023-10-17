@@ -61,8 +61,14 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 ## Section 4: Debugging Flutter Apps
 
 - [x] Debugging apps & Using debug mode
-- [ ] Working with the Flutter DevTools
-- [ ] Using the Flutter Inspector
+- [x] Working with the Flutter DevTools
+  - [x] **Open DevTools in Web Browser**
+    - [x] Using the **Flutter Widget Inspector**
+    - [ ] _Logging_
+    - [ ] _Network_
+    - [ ] Performance (Need to run in profile mode)
+    - [ ] Debugger
+    - [ ] Other Analysis Tools(Pages)
 - [ ] Running the app on a physical devices(on Android)
 - [ ] Running the app on a physical devices(on iOS)
 
