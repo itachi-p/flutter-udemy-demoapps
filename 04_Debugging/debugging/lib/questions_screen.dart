@@ -30,8 +30,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   @override
   Widget build(context) {
-    // TODO: Fix this 'currentQuestionIndex' variable to be 0-based
-    // エラーの原因は、currentQuestionIndexが2周目で5になっていること
+    // Resolved: Fix the variable 'currentQuestionIndex' to be 0-based
+    // ランタイムエラーの直接の原因は、currentQuestionIndexが6になること
+    // しかしその原因は、selectedAnswersがリセットされずに6×2=12個まで増えること
+    // 結果、2周目の最後の回答時に本来0~5の範囲の筈のcurrentQuestionIndexが6になる
+    // indexが6のquestions[6]は存在しないため、RangeErrorが発生する
+    // 適切な場所(結果画面→再スタート時)で0にカウンターリセットが必要
     final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(

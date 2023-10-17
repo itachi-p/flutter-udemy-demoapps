@@ -8,6 +8,9 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] とにかく丁寧に学習モード
   - 早く消化して次に行くよりも時間をかけて確実に理解度を深めることを重視
   - 学習速度は更に落ちるが、英語の学習(hearing, reading)を兼ね英語字幕で視聴する
+    - 英語の音声と字幕の聴覚・視覚情報を入れながら同時に脳内で**日本語翻訳しない**
+    - 英語の語順通り前から順に理解していく。未知の**単語だけ**調べる
+    - 単語を調べても意味が通らない場合のみ、慣用句(だいたい2~5ワード)或いは**最大1文節**を翻訳する
 - [ ] ひたすらスピード！速さは正義！モード
   - GitHub Copilotの提案を最大限活用し、爆速で「とりあえずは動いてるアプリを数多く創り出す」
   - むしろこっちが自分にとって新たな挑戦(コンフォートゾーンの外側)
@@ -20,9 +23,9 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
   - 疑うな友よ、信じるんだ。
   - “Don’t think. feel！ It’s like a finger pointing away to the moon. Don’t concentrate on the finger, or you will miss all the heavenly glory.” by 青3
 
-**main contains:**
-
 ---
+
+**main contains:**
 
 ## Section 1: Introduction
 

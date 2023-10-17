@@ -15,6 +15,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  // ここをfinalにするか、しないのか？
   List<String> _selectedAnswers = [];
   var _activeScreen = 'start-screen';
 
@@ -25,8 +26,10 @@ class _QuizState extends State<Quiz> {
   }
 
   void _chooseAnswer(String answer) {
+    // この変数がリセットされないために、2周目の最後の回答時に累積で12個になる
     _selectedAnswers.add(answer);
 
+    // この条件式は1周目ではtrueだが、2周目では12 == 6でfalseになる
     if (_selectedAnswers.length == questions.length) {
       setState(() {
         _activeScreen = 'results-screen';
@@ -34,9 +37,16 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  // 2周目(以降)を始める際にはこの関数が必ず呼ばれる
   void restartQuiz() {
     setState(() {
       _activeScreen = 'questions-screen';
+      // Solution: Reset the selected answers to 0
+      // 解決策はここ(または2周目最初の質問に回答するまでの間)でのリセット
+      // _selectedAnswers = [];
+      // or 空の配列を再代入する代わりに、clear()メソッドを使う
+      // この場合、_selectedAnswersはfinalにできる
+      _selectedAnswers.clear();
     });
   }
 
