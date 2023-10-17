@@ -36,14 +36,14 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] run the app on emulator (Mainly Android 13)
 - [x] run the app on emulator (iOS 17.0)
 
-## Section 2: Flutter(Dart) Basics 1 - [Role Dice App]
+## Section 2: Flutter(Dart) Basics 1 - [RoleDiceApp]
 
 - [x] Dart Basics
 - [x] Flutter Basics
 - [x] Stateless Widgets
 - [x] Stateful Widgets
 
-## Section 3: Flutter(Dart) Basics 2 - [Quiz App]
+## Section 3: Flutter(Dart) Basics 2 - [QuizApp]
 
 - [x] Use initState()
 - [x] Separation of Data Model & UI
@@ -69,30 +69,54 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
     - [ ] Performance (Need to run in profile mode)
     - [ ] Debugger
     - [ ] Other Analysis Tools(Pages)
-- [ ] Running the app on a physical devices(on Android)
-- [ ] Running the app on a physical devices(on iOS)
+- [ ] Running the app on a physical devices
+  - [x] 以前(Flutter Ver.1で)Android, iPhone実機どっちもやった
+  - [ ] On actual Android device
+  - [ ] On actual iOS device
 
-## Section 5: Adding Interactivity, More Widgets & Theming [Expense Tracker App]
-- [ ] Implementation of Modal Overlays
-- [ ] List & Chart
+
+## Section 5: Adding Interactivity & Theming [ExpenseTrackerApp1]
+
+- [x] Using third package:UUID (generate unique id)
+- [ ] Views List & Chart
 - [ ] Using Flutter Themes
-- [ ] _Handling and validating user input_
+- [ ] Implementation of **Modal Overlays**
+
+## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
+
+## Section 7: [Todoapp]
+
+## Sec8~10: [MealsApp(1/3)]
+
+- [ ] Page navigation with tabs, side drawers, and stack-based navigation
+- [ ] _Adding beautiful animations & page transitions_
+
+## Sec11: [ShoppingListApp1/2]
+
+- [ ] Handling and _validating user input_
+
+## Sec12:
+
 - [ ] _Connecting Flutter app to backend servers_ by sending HTTP requests
-- [ ] _User authentication_
 
-## Section 6: Building Responsive & Adaptive User Interfaces
+## Sec13: Using Native Device Features(e.g.,Camera) [FavoritePlacesApp]
 
-## Section 7: Todo app
+- [ ] **Using native device features like the camera**
+- [ ] **Adding Google Maps**
+- [ ] _Image upload_
 
-... to Section 14
+## Sec14: [ChatApp]
 
-### What I'll learn later (As of October 18, 2023)
+- [ ] Firebase & Firestore
+- [ ] **User authentication**
+- [ ] **Push notifications** - _manual approach_ and **automated**
 
-- Page navigation with tabs, side drawers, and stack-based navigation
+
+### What I'll learn later
+
 - State management solutions
-- **Adding Google Maps**
-- **Using native device features like the camera**
-- _Adding beautiful animations & page transitions_
-- _Image upload_
-- **Push notifications** - _manual approach_ and **automated**
+- **Not** using StatefulWidget
+- Creating original apps!
+- Design
+- Management
 - And much more
