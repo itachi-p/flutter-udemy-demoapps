@@ -74,7 +74,6 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
   - [ ] On actual Android device
   - [ ] On actual iOS device
 
-
 ## Section 5: Adding Interactivity & Theming [ExpenseTrackerApp1]
 
 - [x] Using third package:UUID (generate unique id)
@@ -86,18 +85,18 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ## Section 7: [Todoapp]
 
-## Sec8~10: [MealsApp(1/3)]
+## Sec8~10: [MealsApp]
 
 - [ ] Page navigation with tabs, side drawers, and stack-based navigation
 - [ ] _Adding beautiful animations & page transitions_
 
-## Sec11: [ShoppingListApp1/2]
+## Sec11: [ShoppingListApp1]
 
 - [ ] Handling and _validating user input_
 
-## Sec12:
+## Sec12: [ShoppingListApp2]
 
-- [ ] _Connecting Flutter app to backend servers_ by sending HTTP requests
+- [ ] _Connecting to backend servers_ by sending HTTP requests
 
 ## Sec13: Using Native Device Features(e.g.,Camera) [FavoritePlacesApp]
 
