@@ -12,7 +12,7 @@ enum Category {
 
 // 経費データを登録しておくデータモデルクラス
 class Expense {
-  // 引数が多いので、名前付きコンストラクタを使用
+  // 引数が多いので、全てに名前付きコンストラクタを使用
   Expense({
     required this.title,
     required this.amount,

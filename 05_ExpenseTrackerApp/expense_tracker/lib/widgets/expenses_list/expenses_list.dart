@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:expense_tracker/widgets/expenses_list/expenses_item.dart';
 import 'package:expense_tracker/models/expense.dart';
 
 class ExpenseList extends StatelessWidget {
@@ -27,7 +28,7 @@ class ExpenseList extends StatelessWidget {
       // itemBuilderプロパティには、ListViewの要素を作成する無名関数を指定
       // 2つの位置引数(必須)BuildContextとintはあらかじめ指定されている(名前は任意)
       // それぞれ、ListViewの要素のコンテキストと、作成する要素のインデックスを表す
-      itemBuilder: (ctx, index) => Text(expenses[index].title),
+      itemBuilder: (ctx, index) => ExpensesItem(expenses[index]),
     );
   }
 }
