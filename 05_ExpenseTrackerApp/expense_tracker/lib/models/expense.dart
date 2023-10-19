@@ -2,7 +2,7 @@ import 'package:uuid/uuid.dart';
 // uuidパッケージを使用して、一意なIDを生成する為のインスタンスを作成
 const uuid = Uuid();
 
-// カテゴリーを表すenum(列挙型)のカスタムデータ型
+// 経費のカテゴリーを表すenum(列挙型)のカスタムデータ型
 enum Category {
   food,
   travel,
@@ -10,7 +10,7 @@ enum Category {
   work,
 }
 
-// ダミーのデータを登録しておくデータモデルクラス
+// 経費データを登録しておくデータモデルクラス
 class Expense {
   // 引数が多いので、名前付きコンストラクタを使用
   Expense({
