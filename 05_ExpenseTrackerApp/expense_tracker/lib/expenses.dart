@@ -36,7 +36,6 @@ class _ExpensesState extends State<Expenses> {
         children: [
           // TODO: Add Chart Widget
           Text('The Chart'),
-          // TODO: Add Expense Widgets
           Text('The List of Expenses...'),
         ],
       ),
