@@ -1,4 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart';
+
+// intlパッケージを使用して、日付をフォーマットする為のインスタンスを作成
+final formatter = DateFormat.yMd();
+
 // uuidパッケージを使用して、一意なIDを生成する為のインスタンスを作成
 const uuid = Uuid();
 
@@ -9,6 +15,15 @@ enum Category {
   leisure,
   work,
 }
+
+// カテゴリアイコンを設定
+// Keyにはenum Categoryの値を、ValueにはIconウィジェットを設定
+const categoryIcons = {
+  Category.food: Icons.lunch_dining,
+  Category.travel: Icons.flight_takeoff,
+  Category.leisure: Icons.movie,
+  Category.work: Icons.work,
+};
 
 // 経費データを登録しておくデータモデルクラス
 class Expense {
@@ -29,4 +44,9 @@ class Expense {
   final double amount;
   final DateTime date;
   final Category category;
+
+// 時刻データの表示形式を整形するゲッター
+  String get formattedDate {
+    return formatter.format(date);
+  }
 }

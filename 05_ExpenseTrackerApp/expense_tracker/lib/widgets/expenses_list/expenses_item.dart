@@ -33,10 +33,10 @@ class ExpensesItem extends StatelessWidget {
                 Row(
                   children: [
                     // とりあえずダミーで内蔵アイコンを表示してみる
-                    const Icon(Icons.category),
+                    Icon(categoryIcons[expense.category]),
                     const SizedBox(width: 8),
-                    // 日付もとりあえず文字列化だけして表示してみる
-                    Text(expense.date.toString()),
+                    // DateTime型のフォーマットを整形した文字列を表示
+                    Text(expense.formattedDate),
                   ],
                 ),
               ],
