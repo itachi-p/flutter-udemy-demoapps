@@ -15,8 +15,8 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // ここをfinalにするか、しないのか？(正常に動作はする)
-  List<String> _selectedAnswers = [];
+  // ここをfinalにするか、しないのか？(どっちでも正常に動作はする)
+  final List<String> _selectedAnswers = [];
   var _activeScreen = 'start-screen';
 
   void _switchScreen() {
