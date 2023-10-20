@@ -77,9 +77,9 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 ## Section 5: Adding Interactivity & Theming [ExpenseTrackerApp1]
 
 - [x] Using third package:UUID (generate unique id)
-- [ ] Views List & Chart
-- [ ] Using Flutter Themes
-- [ ] Implementation of **Modal Overlays**
+- [x] Views List & Chart
+- [x] Using Flutter Themes
+- [x] Implementation of **Modal Overlays**
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
 
