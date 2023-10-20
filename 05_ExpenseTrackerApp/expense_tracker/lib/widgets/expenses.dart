@@ -33,6 +33,16 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 画面最上部にAppBarを追加、右端にメニューアイコンのみを表示
+      appBar: AppBar(
+        title: const Text('Flutter Expense Tracker'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
       // Columnの中にListViewのような可変長のウィジェットを配置する場合、
       // 内側のウィジェットのサイズ制御方法がわからない為にエラーが発生する。
       // この場合、間にExpandedウィジェットを配置することでエラーを回避できる。

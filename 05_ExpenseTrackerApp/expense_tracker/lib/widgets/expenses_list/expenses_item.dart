@@ -32,7 +32,7 @@ class ExpensesItem extends StatelessWidget {
                 const Spacer(),
                 Row(
                   children: [
-                    // とりあえずダミーで内蔵アイコンを表示してみる
+                    // カテゴリーに応じたアイコンを表示
                     Icon(categoryIcons[expense.category]),
                     const SizedBox(width: 8),
                     // DateTime型のフォーマットを整形した文字列を表示
