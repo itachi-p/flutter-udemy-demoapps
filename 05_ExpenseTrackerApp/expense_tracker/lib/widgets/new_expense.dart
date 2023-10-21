@@ -12,6 +12,7 @@ class NewExpense extends StatefulWidget {
 class _NewExpenseState extends State<NewExpense> {
   // ユーザ入力値を処理する方法2(Flutterのシステムに組み込まれた機能を使用)
   final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
 
   // ただし、この方法は必要がなくなってもメモリに生き続ける可能性があるので、
   // ウィジェットが破棄される際に、コントローラーを明示的に破棄する必要がある
@@ -19,6 +20,7 @@ class _NewExpenseState extends State<NewExpense> {
   void dispose() {
     // ここでユーザー入力値のコントローラを破棄する
     _titleController.dispose();
+    _amountController.dispose();
     super.dispose();
   }
 
@@ -39,14 +41,32 @@ class _NewExpenseState extends State<NewExpense> {
             ),
             keyboardType: TextInputType.text, // default
           ),
+          TextField(
+            controller: _amountController,
+            maxLength: 10,
+            decoration: const InputDecoration(
+              labelText: 'Amount',
+            ),
+            keyboardType: TextInputType.number,
+          ),
           Row(
             children: [
               ElevatedButton(
                 onPressed: () {
                   // Test:とりあえず入力値をコンソールに出力してみる
-                  print(_titleController.text);
+                  print("title:" + _titleController.text);
+                  print("amount:" + _amountController.text);
                 },
                 child: const Text('Save Expense'),
+              ),
+              const SizedBox(width: 8),
+              // キャンセルボタン
+              ElevatedButton(
+                onPressed: () {
+                  // モーダルシートを閉じる
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancel'),
               ),
             ],
           ),
