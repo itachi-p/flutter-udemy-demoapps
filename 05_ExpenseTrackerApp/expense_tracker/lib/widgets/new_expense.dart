@@ -10,10 +10,16 @@ class NewExpense extends StatefulWidget {
 }
 
 class _NewExpenseState extends State<NewExpense> {
-  // 入力されたタイトルを保存する
-  var _enteredTitle = '';
-  void _saveTitleInput(String inputValue) {
-    _enteredTitle = inputValue;
+  // ユーザ入力値を処理する方法2(Flutterのシステムに組み込まれた機能を使用)
+  final _titleController = TextEditingController();
+
+  // ただし、この方法は必要がなくなってもメモリに生き続ける可能性があるので、
+  // ウィジェットが破棄される際に、コントローラーを明示的に破棄する必要がある
+  @override
+  void dispose() {
+    // ここでユーザー入力値のコントローラを破棄する
+    _titleController.dispose();
+    super.dispose();
   }
 
   @override
@@ -23,8 +29,8 @@ class _NewExpenseState extends State<NewExpense> {
       child: Column(
         children: [
           TextField(
-            // テキストが入力された際に呼ばれるコールバック関数
-            onChanged: _saveTitleInput,
+            // onChangedに関数を渡す代わりに、コントローラを使用する
+            controller: _titleController,
             maxLength: 50,
             decoration: const InputDecoration(
               label: Text('Title'),
@@ -38,7 +44,7 @@ class _NewExpenseState extends State<NewExpense> {
               ElevatedButton(
                 onPressed: () {
                   // Test:とりあえず入力値をコンソールに出力してみる
-                  print(_enteredTitle);
+                  print(_titleController.text);
                 },
                 child: const Text('Save Expense'),
               ),
