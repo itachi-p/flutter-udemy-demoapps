@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/models/expense.dart';
 
 class NewExpense extends StatefulWidget {
   const NewExpense({super.key});
@@ -10,11 +11,12 @@ class NewExpense extends StatefulWidget {
 }
 
 class _NewExpenseState extends State<NewExpense> {
-  // ユーザ入力値を処理する方法2(Flutterのシステムに組み込まれた機能を使用)
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-  // ただし、この方法は必要がなくなってもメモリに生き続ける可能性があるので、
-  // ウィジェットが破棄される際に、コントローラーを明示的に破棄する必要がある
+  // ユーザが日付ピッカーから選択した時点で値が入る変数
+  // 方法1-1:Null許容型のDateTime型を使用する
+  DateTime? _selectedDate;
+
   @override
   void dispose() {
     // ここでユーザー入力値のコントローラを破棄する
@@ -23,14 +25,19 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
-  void _presentDatePicker() {
+  void _presentDatePicker() async {
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
-    showDatePicker(
-        context: context,
-        initialDate: now,
-        firstDate: firstDate,
-        lastDate: now);
+    //　ユーザが将来的に日付を選択する前提で、非同期処理を行う
+    final pickedDate = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: firstDate,
+      lastDate: now,
+    );
+    setState(() {
+      _selectedDate = pickedDate!;
+    });
   }
 
   @override
@@ -66,7 +73,11 @@ class _NewExpenseState extends State<NewExpense> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Selected Date'),
+                  // 日付未選択でなければ、選択された日付を表示する
+                  // 方法1-2 三項式でnullチェックを行い、!を付けDartに絶対Nullでないことを伝える
+                  Text(_selectedDate == null
+                      ? 'No date selected'
+                      : formatter.format(_selectedDate!)),
                   IconButton(
                     // 日付ピッカーを表示するコールバック関数を渡す
                     onPressed: _presentDatePicker,
