@@ -64,7 +64,9 @@ class _NewExpenseState extends State<NewExpense> {
               ElevatedButton(
                 onPressed: () {
                   // モーダルシートを閉じる
-                  Navigator.of(context).pop();
+                  // Navigator.of(context).pop();
+                  //以下も同じ
+                  Navigator.pop(context);
                 },
                 child: const Text('Cancel'),
               ),
