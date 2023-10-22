@@ -13,7 +13,6 @@ class _NewExpenseState extends State<NewExpense> {
   // ユーザ入力値を処理する方法2(Flutterのシステムに組み込まれた機能を使用)
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-
   // ただし、この方法は必要がなくなってもメモリに生き続ける可能性があるので、
   // ウィジェットが破棄される際に、コントローラーを明示的に破棄する必要がある
   @override
@@ -45,6 +44,7 @@ class _NewExpenseState extends State<NewExpense> {
             controller: _amountController,
             maxLength: 10,
             decoration: const InputDecoration(
+              prefixText: '\$ ', // 先頭に$を表示(特殊記号なのでエスケープが必要)
               labelText: 'Amount',
             ),
             keyboardType: TextInputType.number,
