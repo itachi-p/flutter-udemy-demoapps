@@ -23,6 +23,16 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
+  void _presentDatePicker() {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    showDatePicker(
+        context: context,
+        initialDate: now,
+        firstDate: firstDate,
+        lastDate: now);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,20 +45,39 @@ class _NewExpenseState extends State<NewExpense> {
             maxLength: 50,
             decoration: const InputDecoration(
               label: Text('Title'),
-              // 以下でも同じ
-              // labelText: 'Title',
             ),
-            keyboardType: TextInputType.text, // default
           ),
-          TextField(
-            controller: _amountController,
-            maxLength: 10,
-            decoration: const InputDecoration(
-              prefixText: '\$ ', // 先頭に$を表示(特殊記号なのでエスケープが必要)
-              labelText: 'Amount',
+          Row(children: [
+            Expanded(
+              child: TextField(
+                controller: _amountController,
+                decoration: const InputDecoration(
+                  prefixText: '\$ ', // 先頭に$を表示(特殊記号なのでエスケープが必要)
+                  labelText: 'Amount',
+                ),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            keyboardType: TextInputType.number,
-          ),
+            const SizedBox(width: 16),
+            // Rowのデフォルトは取れるスペースを制限していないのでどちらもExpandedで包む
+            // そうしないと、Rowの中にRowを入れ子にするとエラーになる(片方だけExpandedでもエラー)
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Selected Date'),
+                  IconButton(
+                    // 日付ピッカーを表示するコールバック関数を渡す
+                    onPressed: _presentDatePicker,
+                    icon: const Icon(
+                      Icons.calendar_month,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ]),
           Row(
             children: [
               ElevatedButton(
@@ -64,8 +93,6 @@ class _NewExpenseState extends State<NewExpense> {
               ElevatedButton(
                 onPressed: () {
                   // モーダルシートを閉じる
-                  // Navigator.of(context).pop();
-                  //以下も同じ
                   Navigator.pop(context);
                 },
                 child: const Text('Cancel'),
