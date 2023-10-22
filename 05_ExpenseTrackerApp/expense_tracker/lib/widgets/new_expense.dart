@@ -13,9 +13,10 @@ class NewExpense extends StatefulWidget {
 class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-  // ユーザが日付ピッカーから選択した時点で値が入る変数
-  // 方法1-1:Null許容型のDateTime型を使用する
+  // ユーザが日付ピッカーから選択した時点で値が入る変数(Null許容型にする)
   DateTime? _selectedDate;
+  // カテゴリーのドロップダウンリストで選択された値を格納する変数
+  Category _selectedCategory = Category.leisure;
 
   @override
   void dispose() {
@@ -74,7 +75,7 @@ class _NewExpenseState extends State<NewExpense> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // 日付未選択でなければ、選択された日付を表示する
-                  // 方法1-2 三項式でnullチェックを行い、!を付けDartに絶対Nullでないことを伝える
+                  // 三項式でnullチェックを行い、!を付けDartに絶対Nullでないことを伝える
                   Text(_selectedDate == null
                       ? 'No date selected'
                       : formatter.format(_selectedDate!)),
@@ -89,8 +90,36 @@ class _NewExpenseState extends State<NewExpense> {
               ),
             )
           ]),
+          const SizedBox(height: 16),
           Row(
             children: [
+              DropdownButton(
+                value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  // ドロップダウンで選択された値をStateに保存する
+                  setState(() {
+                    _selectedCategory = value as Category;
+                  });
+                },
+              ),
+              const Spacer(),
+              TextButton(
+                onPressed: () {
+                  // モーダルシートを閉じる
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel'),
+              ),
               ElevatedButton(
                 onPressed: () {
                   // Test:とりあえず入力値をコンソールに出力してみる
@@ -98,15 +127,6 @@ class _NewExpenseState extends State<NewExpense> {
                   print("amount:" + _amountController.text);
                 },
                 child: const Text('Save Expense'),
-              ),
-              const SizedBox(width: 8),
-              // キャンセルボタン
-              ElevatedButton(
-                onPressed: () {
-                  // モーダルシートを閉じる
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancel'),
               ),
             ],
           ),
