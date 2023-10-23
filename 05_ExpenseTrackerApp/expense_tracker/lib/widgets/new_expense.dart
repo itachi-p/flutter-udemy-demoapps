@@ -85,12 +85,15 @@ class _NewExpenseState extends State<NewExpense> {
         category: _selectedCategory,
       ),
     );
+    // 1件登録したら自動的にオーバーレイを閉じる
+    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      // 画面最上部はインナーカメラや時計等と重なるので、Topに広めの余白を設定
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(

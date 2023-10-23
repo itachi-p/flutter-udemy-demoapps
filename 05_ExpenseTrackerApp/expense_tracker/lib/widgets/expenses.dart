@@ -33,6 +33,8 @@ class _ExpensesState extends State<Expenses> {
   // 経費を追加する為のモーダルシートを表示する関数
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      // モーダルオーバーレイの高さを利用可能な全てのスペースを使用するように設定
+      isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
