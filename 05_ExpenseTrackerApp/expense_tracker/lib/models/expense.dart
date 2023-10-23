@@ -34,12 +34,9 @@ class Expense {
     required this.date,
     required this.category,
   }) : id = uuid.v4(); // initilizer list
-  /* initilizer listは、コンストラクタの引数として渡されない変数の初期化に使用
-  一意なIDのような(ユーザーが触る必要のない)クラス変数などの初期化に使用すると良い
-  */
+  // initilizer listは、コンストラクタの引数として渡されない変数の初期化に使用
 
-  // 後で操作する為の一意な固有ID(int型でも良いが、String型で作成)
-  final String id;
+  final String id; // 一意な固有ID
   final String title;
   final double amount;
   final DateTime date;

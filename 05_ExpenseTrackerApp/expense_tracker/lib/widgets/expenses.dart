@@ -15,7 +15,6 @@ class Expenses extends StatefulWidget {
 
 class _ExpensesState extends State<Expenses> {
   // ダミーの経費データを作成
-  // ※後で経費を入力できるように作り変える
   final List<Expense> _registeredExpense = [
     Expense(
       title: 'Flutter Course',
@@ -35,8 +34,15 @@ class _ExpensesState extends State<Expenses> {
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const NewExpense(),
+      builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
+  }
+
+  // 上記のモーダルシートで入力された新しい経費データを追加する関数
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.add(expense);
+    });
   }
 
   @override
@@ -52,16 +58,12 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      // Columnの中にListViewのような可変長のウィジェットを配置する場合、
-      // 内側のウィジェットのサイズ制御方法がわからない為にエラーが発生する。
-      // この場合、間にExpandedウィジェットを配置することでエラーを回避できる。
       body: Column(
         children: [
           // TODO: Add Chart Widget
           const Text('The Chart'),
           //実際に経費データを表示するListウィジェット
-          // リスト形式(Column)の中にリスト形式(ListView)なので
-          // エラーの為、間にExpandedウィジェットを配置する。
+          // Columnの中でListViewのような可変長ウィジェットはExpandedで包む
           Expanded(
             child: ExpenseList(expenses: _registeredExpense),
           ),

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:expense_tracker/models/expense.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+
+  // 新しい経費をexpensesのリストに追加する為のプロパティ
+  // 命名パターンの理由は、あるイベント発生時に実行される関数であることを示す為
+  final void Function(Expense expense) onAddExpense;
 
   @override
   State<NewExpense> createState() {
@@ -70,6 +75,16 @@ class _NewExpenseState extends State<NewExpense> {
       // ここでreturnを書かないと、ダイアログが表示された後に登録処理が実行されてしまう
       return;
     }
+    // バリデーションを通過した場合、経費データを登録する
+    // Expensesクラスから親ウィジェットに渡されたonAddExpense関数を呼び出す
+    widget.onAddExpense( // Stateクラス内からStatefulWidgetクラスのプロパティにアクセス
+      Expense(
+        title: _titleController.text,
+        amount: enteredAmount,
+        date: _selectedDate!, // Null許容型変数なので、Dartに絶対Nullでないと伝える
+        category: _selectedCategory,
+      ),
+    );
   }
 
   @override
