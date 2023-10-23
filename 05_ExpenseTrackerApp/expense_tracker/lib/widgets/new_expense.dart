@@ -48,7 +48,26 @@ class _NewExpenseState extends State<NewExpense> {
     // 金額の入力値が不正かどうか(double型に変換できないか、0以下の値が入力された場合)
     final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
     // 入力値をまとめてチェック
-    if (_titleController.text.trim().isEmpty || amountIsInvalid || _selectedDate == null) {
+    if (_titleController.text.trim().isEmpty ||
+        amountIsInvalid ||
+        _selectedDate == null) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Invalid input'),
+          content: const Text(
+              'Please make sure a valid title, amount, date and category were entered..'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text('Okay'),
+            ),
+          ],
+        ),
+      );
+      // ここでreturnを書かないと、ダイアログが表示された後に登録処理が実行されてしまう
       return;
     }
   }
