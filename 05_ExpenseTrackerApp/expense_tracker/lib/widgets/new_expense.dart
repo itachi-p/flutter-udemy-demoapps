@@ -41,6 +41,18 @@ class _NewExpenseState extends State<NewExpense> {
     });
   }
 
+  // ユーザの入力値をバリデーションした上で、経費を送信する関数
+  void _submitExpenseData() {
+    // 金額もテキストになっているので、まずはdouble型に変換を試みる
+    final enteredAmount = double.tryParse(_amountController.text);
+    // 金額の入力値が不正かどうか(double型に変換できないか、0以下の値が入力された場合)
+    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
+    // 入力値をまとめてチェック
+    if (_titleController.text.trim().isEmpty || amountIsInvalid || _selectedDate == null) {
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -60,27 +72,23 @@ class _NewExpenseState extends State<NewExpense> {
               child: TextField(
                 controller: _amountController,
                 decoration: const InputDecoration(
-                  prefixText: '\$ ', // 先頭に$を表示(特殊記号なのでエスケープが必要)
+                  prefixText: '\$ ', // 先頭に$を表示(エスケープが必要)
                   labelText: 'Amount',
                 ),
                 keyboardType: TextInputType.number,
               ),
             ),
             const SizedBox(width: 16),
-            // Rowのデフォルトは取れるスペースを制限していないのでどちらもExpandedで包む
-            // そうしないと、Rowの中にRowを入れ子にするとエラーになる(片方だけExpandedでもエラー)
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // 日付未選択でなければ、選択された日付を表示する
                   // 三項式でnullチェックを行い、!を付けDartに絶対Nullでないことを伝える
                   Text(_selectedDate == null
                       ? 'No date selected'
                       : formatter.format(_selectedDate!)),
                   IconButton(
-                    // 日付ピッカーを表示するコールバック関数を渡す
                     onPressed: _presentDatePicker,
                     icon: const Icon(
                       Icons.calendar_month,
@@ -121,11 +129,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
-                onPressed: () {
-                  // Test:とりあえず入力値をコンソールに出力してみる
-                  print("title:" + _titleController.text);
-                  print("amount:" + _amountController.text);
-                },
+                onPressed: _submitExpenseData,
                 child: const Text('Save Expense'),
               ),
             ],
