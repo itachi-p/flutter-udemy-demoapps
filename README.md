@@ -78,8 +78,8 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 - [x] Using third package:UUID (generate unique id)
 - [ ] Views
-  - [x]  List
-  - [ ]   & Chart
+  - [x] List
+  - [ ] & Chart
 - [x] Implementation of **Modal Overlays**
 - [x] スワイプ(削除)機能の実装
 - [ ] スナックバーの実装(スワイプ削除時のアンドゥ機能)  
@@ -88,7 +88,14 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
 
+- [ ] Responsive & Adaptive User Interfaces
+
 ## Section 7: [Todoapp]
+
+- [ ] 三つのツリー構造
+  - [ ] Widget Tree
+  - [ ] Element Tree
+  - [ ] Render Tree
 
 ## Sec8~10: [MealsApp]
 

@@ -56,8 +56,21 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    // 経費データが1件も無い場合の条件分岐を追加
+    // コンテンツ全体をウィジェットを格納する変数とし、初期値を設定
+    // ↑…といった類のコメントこそが「コードを読めばわかる不要なコメント」の典型例なのかもしれない
+    // 自分の独習用なので記憶の定着の為にと書いているが、改めて"The Art of Readable Code"を読み認識を改める
+    Widget mainContent = const Center(
+      child: Text('No expenses found. Start adding some!'),
+    );
+
+    if (_registeredExpense.isNotEmpty) {
+      mainContent = ExpenseList(
+        expenses: _registeredExpense,
+        onRemoveExpense: _removeExpense,
+      );}
+
     return Scaffold(
-      // 画面最上部にAppBarを追加、右端にメニューアイコンのみを表示
       appBar: AppBar(
         title: const Text('Flutter Expense Tracker'),
         actions: [
@@ -74,10 +87,7 @@ class _ExpensesState extends State<Expenses> {
           //実際に経費データを表示するListウィジェット
           // Columnの中でListViewのような可変長ウィジェットはExpandedで包む
           Expanded(
-            child: ExpenseList(
-              expenses: _registeredExpense,
-              onRemoveExpense: _removeExpense,
-            ),
+            child: mainContent,
           ),
         ],
       ),
