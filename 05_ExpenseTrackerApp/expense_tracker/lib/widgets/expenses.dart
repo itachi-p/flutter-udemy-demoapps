@@ -47,6 +47,13 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  // スワイプされた経費を、見た目上の処理だけでなく実際に削除する関数
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.remove(expense);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +74,10 @@ class _ExpensesState extends State<Expenses> {
           //実際に経費データを表示するListウィジェット
           // Columnの中でListViewのような可変長ウィジェットはExpandedで包む
           Expanded(
-            child: ExpenseList(expenses: _registeredExpense),
+            child: ExpenseList(
+              expenses: _registeredExpense,
+              onRemoveExpense: _removeExpense,
+            ),
           ),
         ],
       ),
