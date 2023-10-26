@@ -49,9 +49,27 @@ class _ExpensesState extends State<Expenses> {
 
   // スワイプされた経費を、見た目上の処理だけでなく実際に削除する関数
   void _removeExpense(Expense expense) {
+    // 削除実行前に、削除される経費のインデックスを取得
+    final expenseIndex = _registeredExpense.indexOf(expense);
     setState(() {
       _registeredExpense.remove(expense);
     });
+    // 削除された経費を元に戻すこともできるよう、SnackBarを表示
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Expense deleted.'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              // 削除前と同じに戻したいのでaddではなくinsertを使用
+              _registeredExpense.insert(expenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   @override
@@ -68,7 +86,8 @@ class _ExpensesState extends State<Expenses> {
       mainContent = ExpenseList(
         expenses: _registeredExpense,
         onRemoveExpense: _removeExpense,
-      );}
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
