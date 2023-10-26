@@ -28,6 +28,12 @@ class _ExpensesState extends State<Expenses> {
       date: DateTime.now(),
       category: Category.leisure,
     ),
+        Expense(
+      title: 'Ultra Super King Burger',
+      amount: 12.88,
+      date: DateTime.parse('2023-10-20'),
+      category: Category.food,
+    ),
   ];
 
   // 経費を追加する為のモーダルシートを表示する関数
@@ -54,6 +60,11 @@ class _ExpensesState extends State<Expenses> {
     setState(() {
       _registeredExpense.remove(expense);
     });
+    // 連続で削除された場合に、キューに溜まったSnackBarを全て削除する
+    // これをしないと、前のSnackBarの表示が終わるまで次が表示されない
+    ScaffoldMessenger.of(context).clearSnackBars();
+    // hideCurrentSnackBar()との違いも要確認(見た目上は同じ挙動に見える)
+
     // 削除された経費を元に戻すこともできるよう、SnackBarを表示
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
