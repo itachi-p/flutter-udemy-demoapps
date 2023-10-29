@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/expenses.dart';
 
+// カラースキームを設定するグローバル変数
+// kで始まる変数名は、Flutterでグローバル変数を設定する際の慣習
+// ColorScheme.fromSeed()の引数に渡したseedColorを基準にした色の組み合わせを生成
+final kColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 96, 59, 181),
+);
+
 void main() {
   runApp(
     MaterialApp(
@@ -10,8 +17,14 @@ void main() {
       // ThemeData()そのものには引数を渡さずcopyWith()で引数を渡すと、
       // 既存のデフォルト設定に引数で渡した値の差分だけをオーバーライドする形でテーマを設定できる
       theme: ThemeData().copyWith(
-          useMaterial3: true,
-          scaffoldBackgroundColor: const Color.fromARGB(255, 237, 145, 244)),
+        useMaterial3: true,
+        colorScheme: kColorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kColorScheme.onPrimaryContainer,
+          foregroundColor: kColorScheme.primaryContainer,
+          elevation: 0.8,
+        )
+      ),
       home: const Expenses(),
     ),
   );
