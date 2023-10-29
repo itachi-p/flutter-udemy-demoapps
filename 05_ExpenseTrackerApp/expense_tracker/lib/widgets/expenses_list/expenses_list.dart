@@ -24,6 +24,12 @@ class ExpenseList extends StatelessWidget {
       itemBuilder: (ctx, index) => Dismissible(
         // スワイプによって削除される要素の一意なキーを指定
         key: ValueKey(expenses[index]),
+        // スワイプ時の背景効果を設定
+        background: Container(
+          color: Theme.of(context).colorScheme.error.withOpacity(0.75),
+          margin: EdgeInsets.symmetric(
+              horizontal: Theme.of(context).cardTheme.margin!.horizontal),
+        ),
         // 見た目上のスワイプだけでなく、実際に削除処理を指定
         onDismissed: (direction) => {
           // 引数として受け取るdirectionはスワイプの方向を示すが、今回は不要

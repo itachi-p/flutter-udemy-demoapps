@@ -20,8 +20,11 @@ class ExpensesItem extends StatelessWidget {
           vertical: 16,
         ),
         child: Column(
+          // Columnの中の要素を左端に揃える
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            // 個別にスタイルを設定するのでなく、ThemeDataで設定したテキストスタイルを使用
+            Text(expense.title, style: Theme.of(context).textTheme.titleLarge,),
             const SizedBox(height: 4),
             Row(
               children: [
