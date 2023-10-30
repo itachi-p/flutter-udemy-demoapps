@@ -12,7 +12,7 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
     - 英語の語順通り前から順に理解していく。未知の**単語だけ**調べる
     - 単語を調べても意味が通らない場合のみ、慣用句(だいたい2~5ワード)或いは**最大1文節**を翻訳する
 - [ ] ひたすらスピード！速さは正義！モード
-  - GitHub Copilotの提案を最大限活用し、爆速で「とりあえずは動いてるアプリを数多く創り出す」
+  - GitHub Copilotの提案を最大限活用し、爆速でアプリを多く創り出す
   - むしろこっちが自分にとって新たな挑戦(コンフォートゾーンの外側)
   - おそらくは実務で要求されるのはほぼ常時コチラ
   - 限られた時間内で一定以上の成果を上げる為にはマストと思われる
@@ -20,7 +20,6 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [ ] 上記2つのモードをええ塩梅で切り替える器用さと判断力
   - 日々の訓練あるのみ
   - 完璧じゃなくても先週・先月・四半期前・去年よりはできるようになる（筈）
-  - 疑うな友よ、信じるんだ。
   - “Don’t think. feel！ It’s like a finger pointing away to the moon. Don’t concentrate on the finger, or you will miss all the heavenly glory.” by 青3
 
 ---
@@ -77,13 +76,13 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 ## Section 5: Adding Interactivity & Theming [ExpenseTrackerApp1]
 
 - [x] Using third package:UUID (generate unique id)
-- [ ] Views
+- [x] Views
   - [x] List
-  - [ ] & Chart
+  - [x] & Chart
 - [x] Implementation of **Modal Overlays**
 - [x] スワイプ(削除)機能の実装
-- [ ] スナックバーの実装(スワイプ削除時のアンドゥ機能)  
-- [ ] Using Flutter Themes
+- [x] スナックバーの実装(スワイプ削除時のアンドゥ機能)  
+- [x] Using Flutter Themes
 - [ ] サマリー表示の実装
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
