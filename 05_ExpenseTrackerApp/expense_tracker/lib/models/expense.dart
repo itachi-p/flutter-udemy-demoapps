@@ -50,6 +50,13 @@ class ExpenseBucket {
     required this.expenses,
   });
 
+  // 名前付きコンストラクタで、カテゴリーと全経費データを受け取る
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+    // イニシャライザを使用して、カテゴリと一致する経費データのみを抽出
+     : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
   final Category category;
   final List<Expense> expenses;
 
