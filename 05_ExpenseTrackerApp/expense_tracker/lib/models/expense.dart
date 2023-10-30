@@ -9,12 +9,7 @@ final formatter = DateFormat.yMd();
 const uuid = Uuid();
 
 // 経費のカテゴリーを表すenum(列挙型)のカスタムデータ型
-enum Category {
-  food,
-  travel,
-  leisure,
-  work,
-}
+enum Category { food, travel, leisure, work }
 
 // カテゴリアイコンを設定
 // Keyにはenum Categoryの値を、ValueにはIconウィジェットを設定
@@ -45,5 +40,25 @@ class Expense {
 // 時刻データの表示形式を整形するゲッター
   String get formattedDate {
     return formatter.format(date);
+  }
+}
+
+// チャートに表示する経費データを集計する為のデータモデルクラス
+class ExpenseBucket {
+  const ExpenseBucket({
+    required this.category,
+    required this.expenses,
+  });
+
+  final Category category;
+  final List<Expense> expenses;
+
+  double get totalExpenses {
+    double sum = 0;
+
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }

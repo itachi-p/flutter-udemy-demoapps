@@ -69,7 +69,7 @@ void main() {
             ),
       ),
       // ダークモードをシステム設定に合わせる(デフォルトなので省略可)
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: const Expenses(),
     ),
   );
