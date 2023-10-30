@@ -86,10 +86,10 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
 
-- [ ] Responsive & Adaptive User Interfaces
-  - !**Not** _Responsi"ble"_
+- !**Not** _Responsi"ble"_
+- Flutter3はMacOS, Windows, Linuxも全対応だが、基本モバイル想定
+- [x] デバイスの向きに合わせない(特定方向に固定する)方法
 - [ ] ユーザーの使用環境に応じてUIを最適化する
-  - Flutter3はMacOS, Windows, Linuxも全対応だが、基本モバイル想定
   - [ ] デバイスの向き(縦・横)
   - [ ] デバイスのサイズ(スマホ・タブレット・PC)
   - [ ] デバイスのOS(Android・iOS・Web)
