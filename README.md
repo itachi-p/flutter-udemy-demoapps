@@ -83,11 +83,17 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] スワイプ(削除)機能の実装
 - [x] スナックバーの実装(スワイプ削除時のアンドゥ機能)  
 - [x] Using Flutter Themes
-- [ ] サマリー表示の実装
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
 
 - [ ] Responsive & Adaptive User Interfaces
+  - !**Not** _Responsi"ble"_
+- [ ] ユーザーの使用環境に応じてUIを最適化する
+  - Flutter3はMacOS, Windows, Linuxも全対応だが、基本モバイル想定
+  - [ ] デバイスの向き(縦・横)
+  - [ ] デバイスのサイズ(スマホ・タブレット・PC)
+  - [ ] デバイスのOS(Android・iOS・Web)
+- [ ] Building Adaptive Widgets
 
 ## Section 7: [Todoapp]
 
