@@ -5,6 +5,8 @@ import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/chart/chart.dart';
 
+// Section5のExpenseTrackerをresponsive対応させていく
+
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
@@ -68,6 +70,11 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    // ここでユーザーの使用環境を取得し、それに応じて表示を変える
+    // MediaQuery.of(context)以下のオブジェクトにアクセスし様々なメタ情報を取得できる
+    print(MediaQuery.of(context).size.width); // 画面の幅
+    print(MediaQuery.of(context).size.height); // 画面の高さ
+
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
     );

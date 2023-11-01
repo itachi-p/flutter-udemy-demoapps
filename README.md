@@ -5,22 +5,26 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ## 学習方針(考え方)
 
+- [ ] チュートリアルや写経でも『The Art of Readable Code』の考えを反映する
+  - 講師による変数の命名にも改善余地を見出す
+  - 逆に疑問を感じた書き方に対し、なぜ講師がそうしているのかを考える
+  - 「良いコード」とは誰が見てもわかりやすいコード
+  - 変数名や関数名、コメントの書き方、インデントや改行の入れ方を工夫する
+  - コメントに関して現状は「自身の理解度、知識定着度」優先だが、開発現場想定では「他人の理解度」を優先する
+
 - [x] とにかく丁寧に学習モード
-  - 早く消化して次に行くよりも時間をかけて確実に理解度を深めることを重視
-  - 学習速度は更に落ちるが、英語の学習(hearing, reading)を兼ね英語字幕で視聴する
+  - 学習速度や成果物作成進度は更に落ちるが、英語の学習(hearing, reading)を兼ね英語音声＋英語字幕で視聴する
     - 英語の音声と字幕の聴覚・視覚情報を入れながら同時に脳内で**日本語翻訳しない**
-    - 英語の語順通り前から順に理解していく。未知の**単語だけ**調べる
+    - **英語の語順通り前から順に理解**していく。未知の**単語だけ**調べる
     - 単語を調べても意味が通らない場合のみ、慣用句(だいたい2~5ワード)或いは**最大1文節**を翻訳する
 - [ ] ひたすらスピード！速さは正義！モード
-  - GitHub Copilotの提案を最大限活用し、爆速でアプリを多く創り出す
-  - むしろこっちが自分にとって新たな挑戦(コンフォートゾーンの外側)
-  - おそらくは実務で要求されるのはほぼ常時コチラ
-  - 限られた時間内で一定以上の成果を上げる為にはマストと思われる
-  - 丁寧に学習モードがある程度進んだ時点でこちらに切り替える
+  - (GitHub Copilotの提案を最大限活用し)爆速でコードを書く
+  - おそらく実務で要求されるのはこっちがメイン
+  - 限られた時間内で一定以上の成果を上げる為にはマスト
 - [ ] 上記2つのモードをええ塩梅で切り替える器用さと判断力
   - 日々の訓練あるのみ
-  - 完璧じゃなくても先週・先月・四半期前・去年よりはできるようになる（筈）
-  - “Don’t think. feel！ It’s like a finger pointing away to the moon. Don’t concentrate on the finger, or you will miss all the heavenly glory.” by 青3
+  - 完璧じゃなくても先週・先月・四半期前・去年よりはできるようになる
+  - "Don't think. feel！ It's like a finger pointing away to the moon. Don't concentrate on the finger, or you will miss all the heavenly glory." by 青3
 
 ---
 
@@ -86,12 +90,14 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 
 ## Section 6: Building Responsive & Adaptive User Interfaces[ExpenseTrackerApp2)]
 
-- !**Not** _Responsi"ble"_
-- Flutter3はMacOS, Windows, Linuxも全対応だが、基本モバイル想定
+- !**NOT** _Responsi"ble"_
+- Flutter3はMacOS, Windows, Linux, Webブラウザも全対応だが、基本モバイルアプリ版で想定
 - [x] デバイスの向きに合わせない(特定方向に固定する)方法
 - [ ] ユーザーの使用環境に応じてUIを最適化する
-  - [ ] デバイスの向き(縦・横)
+  - [ ] デバイスの向き(縦 portrait mode・横 landscape mode)を検出
+  - [ ] ランドスケープモードではチャートを左、リストを右に表示する
   - [ ] デバイスのサイズ(スマホ・タブレット・PC)
+    - [ ] ポートレートモードでも十分な幅があればチャートは左に表示
   - [ ] デバイスのOS(Android・iOS・Web)
 - [ ] Building Adaptive Widgets
 

@@ -1,6 +1,13 @@
-# expense_tracker2
+# Section 6 expense_tracker2
 
-A new Flutter project.
+Section 5で作成したExpense Tracker Appを、Responsiveに対応させる。
+
+- ユーザーの使用環境に応じてUIを最適化する
+  - デバイスの向き(縦 portrait mode・横 landscape mode)を検出
+  - ランドスケープモードではチャートを左、リストを右に表示する
+  - デバイスのサイズ(スマホ・タブレット・PC)
+    - ポートレートモードでも十分な幅があればチャートは左に表示
+    - つまり、使えるスペースによってColumnかRowかを切り替える
 
 ## Getting Started
 
