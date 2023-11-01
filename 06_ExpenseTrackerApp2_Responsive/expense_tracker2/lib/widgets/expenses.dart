@@ -72,8 +72,9 @@ class _ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     // ここでユーザーの使用環境を取得し、それに応じて表示を変える
     // MediaQuery.of(context)以下のオブジェクトにアクセスし様々なメタ情報を取得できる
-    print(MediaQuery.of(context).size.width); // 画面の幅
-    print(MediaQuery.of(context).size.height); // 画面の高さ
+    final screenWidth = MediaQuery.of(context).size.width; // 画面の幅
+    final orientation = MediaQuery.of(context).orientation; // 画面の向き
+    print("$screenWidth, $orientation");
 
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
@@ -96,14 +97,26 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      // 画面幅に応じて表示を変える
+      body: screenWidth < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(children: [
+              // ColumnからRowに変更する上で、width: double.infinityが問題になる
+              // 最大幅を取ろうとする子要素が横に並ぶUIは表示できない為、Expandedで包む
+              Expanded(
+                child: Chart(expenses: _registeredExpenses),
+              ),
+              Expanded(
+                child: mainContent,
+              ),
+            ]),
     );
   }
 }

@@ -39,6 +39,7 @@ class Chart extends StatelessWidget {
         vertical: 16,
         horizontal: 8,
       ),
+      // double.infinityは、親Widgetの制限下で最大幅を取ろうとする
       width: double.infinity,
       height: 180,
       decoration: BoxDecoration(
