@@ -71,10 +71,8 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     // ここでユーザーの使用環境を取得し、それに応じて表示を変える
-    // MediaQuery.of(context)以下のオブジェクトにアクセスし様々なメタ情報を取得できる
+    // MediaQuery.of(context)オブジェクトにアクセスし様々なメタ情報を取得できる
     final screenWidth = MediaQuery.of(context).size.width; // 画面の幅
-    final orientation = MediaQuery.of(context).orientation; // 画面の向き
-    print("$screenWidth, $orientation");
 
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
