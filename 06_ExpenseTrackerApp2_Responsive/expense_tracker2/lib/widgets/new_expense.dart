@@ -87,7 +87,8 @@ class _NewExpenseState extends State<NewExpense> {
       // 横向き画面でモーダルに重ねてキーボードを出した場合、スクロールが必要になる
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 48, 16, keyboardSpace+ 16),
+          // 画面上部(Top)のカメラやアイコンを避けるための大きめの余白設定を元に戻す
+          padding: EdgeInsets.fromLTRB(16, 16, 16, keyboardSpace+ 16),
           child: Column(
             children: [
               TextField(

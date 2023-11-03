@@ -34,6 +34,9 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      // Flutterはデバイス上部にあるカメラやステータスバーの位置を把握している
+      // 上部のPadding余白を大きめに設定するのでなく、用意されている仕組みに任せる
+      useSafeArea: true, // この設定によって、カメラやステータスバーを回避する
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpense(onAddExpense: _addExpense),
