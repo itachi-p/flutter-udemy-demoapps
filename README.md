@@ -93,11 +93,11 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - !**NOT** _Responsi"ble"_
 - Flutter3はMacOS, Windows, Linux, Webブラウザも全対応だが、基本モバイルアプリ版で想定
 - [x] デバイスの向きに合わせない(特定方向に固定する)方法
-- [ ] ユーザーの使用環境に応じてUIを最適化する
-  - [ ] デバイスの向き(縦 portrait mode・横 landscape mode)を検出
-  - [ ] ランドスケープモードではチャートを左、リストを右に表示する
-  - [ ] デバイスのサイズ(スマホ・タブレット・PC)
-    - [ ] ポートレートモードでも十分な幅があればチャートは左に表示
+- [x] ユーザーの使用環境に応じてUIを最適化する
+  - [x] デバイスの向き(縦 portrait mode・横 landscape mode)を検出
+  - [x] ランドスケープモードではチャートを左、リストを右に表示する
+  - [x] デバイスのサイズ(スマホ・タブレット・PC)
+    - [x] ポートレートモードでも十分な幅があればチャートは左に表示
   - [ ] デバイスのOS(Android・iOS・Web)
 - [ ] Building Adaptive Widgets
 

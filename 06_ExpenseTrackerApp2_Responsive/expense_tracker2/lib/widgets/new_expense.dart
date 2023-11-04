@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/models/expense.dart';
+// iOSデバイスに特化したUIを作成するためのライブラリ
+import 'package:flutter/cupertino.dart';
+// 実行プラットフォームの検出に必要なライブラリ
+import 'dart:io';
 
 class NewExpense extends StatefulWidget {
   const NewExpense({super.key, required this.onAddExpense});
@@ -33,13 +37,29 @@ class _NewExpenseState extends State<NewExpense> {
     });
   }
 
-  void _submitExpenseData() {
-    final enteredAmount = double.tryParse(_amountController
-        .text); // tryParse('Hello') => null, tryParse('1.12') => 1.12
-    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
-    if (_titleController.text.trim().isEmpty ||
-        amountIsInvalid ||
-        _selectedDate == null) {
+  // Adaptive Widgetの一例として、iOSとAndroidで異なるUI(エラーダイアログ)を表示する
+  void _showDialog() {
+    // 実行中のプラットフォームを取得(Linux, Windows, macOS等も検出可能)
+    if (Platform.isIOS) {
+    // iOSの場合は特化UIと言えるCupertino系のUIを使う
+    showCupertinoDialog(
+          context: context,
+          builder: (ctx) => CupertinoAlertDialog(
+            // HACK:ここも中身は殆ど同じなので、DRY原則に従うなら共通化すべきか？
+                title: const Text('Invalid input'),
+                content: const Text(
+                    'Please make sure a valid title, amount, date and category was entered.'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                    },
+                    child: const Text('Okay'),
+                  ),
+                ],
+              ));
+    } else {
+      // Android(より厳密にはiOS以外)の場合は通常のshowDialogを使う
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -56,6 +76,18 @@ class _NewExpenseState extends State<NewExpense> {
           ],
         ),
       );
+    }
+  }
+
+  void _submitExpenseData() {
+    final enteredAmount = double.tryParse(_amountController
+        .text); // tryParse('Hello') => null, tryParse('1.12') => 1.12
+    final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
+    if (_titleController.text.trim().isEmpty ||
+        amountIsInvalid ||
+        _selectedDate == null) {
+      // ここでiOSとAndroidで異なるUI(エラーダイアログ)を表示する
+      _showDialog();
       return;
     }
 
@@ -77,6 +109,9 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
+  // HACK(OPTIMIZE):以下の使用デバイスの画面サイズや向きによる条件分岐は極めて冗長
+  // DRY原則に従いリファクタリングすれば、恐らくコード量は半分以下になる
+  // またほぼ同じコードのコピペである為、可読性だけでなくメンテナンス性も悪い
   @override
   Widget build(BuildContext context) {
     // 横向き画面でモーダルとキーボードのUIが重なるエリアのサイズを取得
