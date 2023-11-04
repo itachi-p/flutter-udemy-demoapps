@@ -41,23 +41,24 @@ class _NewExpenseState extends State<NewExpense> {
   void _showDialog() {
     // 実行中のプラットフォームを取得(Linux, Windows, macOS等も検出可能)
     if (Platform.isIOS) {
-    // iOSの場合は特化UIと言えるCupertino系のUIを使う
-    showCupertinoDialog(
-          context: context,
-          builder: (ctx) => CupertinoAlertDialog(
-            // HACK:ここも中身は殆ど同じなので、DRY原則に従うなら共通化すべきか？
-                title: const Text('Invalid input'),
-                content: const Text(
-                    'Please make sure a valid title, amount, date and category was entered.'),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(ctx);
-                    },
-                    child: const Text('Okay'),
-                  ),
-                ],
-              ));
+      // iOSの場合は特化UIと言えるCupertino系のUIを使う
+      showCupertinoDialog(
+        context: context,
+        builder: (ctx) => CupertinoAlertDialog(
+          // HACK:ここも中身は殆ど同じなので、DRY原則に従うなら共通化すべきか？
+          title: const Text('Invalid input'),
+          content: const Text(
+              'Please make sure a valid title, amount, date and category was entered.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text('Okay'),
+            ),
+          ],
+        ),
+      );
     } else {
       // Android(より厳密にはiOS以外)の場合は通常のshowDialogを使う
       showDialog(
@@ -231,6 +232,7 @@ class _NewExpenseState extends State<NewExpense> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
+                              // 三項式もこれくらいなら問題ない気はする。
                               _selectedDate == null
                                   ? 'No date selected'
                                   : formatter.format(_selectedDate!),

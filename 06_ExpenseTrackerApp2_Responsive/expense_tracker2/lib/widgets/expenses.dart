@@ -99,15 +99,14 @@ class _ExpensesState extends State<Expenses> {
         ],
       ),
       // 画面幅に応じて表示を変える
+      // HACK(WARNING):三項式の記述が長くなると可読性が下がる
       body: screenWidth < 600
-          ? Column(
-              children: [
-                Chart(expenses: _registeredExpenses),
-                Expanded(
-                  child: mainContent,
-                ),
-              ],
-            )
+          ? Column(children: [
+              Chart(expenses: _registeredExpenses),
+              Expanded(
+                child: mainContent,
+              ),
+            ])
           : Row(children: [
               // ColumnからRowに変更する上で、width: double.infinityが問題になる
               // 最大幅を取ろうとする子要素が横に並ぶUIは表示できない為、Expandedで包む
