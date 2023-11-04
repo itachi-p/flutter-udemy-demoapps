@@ -10,7 +10,7 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
   - 逆に疑問を感じた書き方に対し、なぜ講師がそうしているのかを考える
   - 「良いコード」とは誰が見てもわかりやすいコード
   - 変数名や関数名、コメントの書き方、インデントや改行の入れ方を工夫する
-  - コメントに関して現状は「自身の理解度、知識定着度」優先だが、開発現場想定では「他人の理解度」を優先する
+  - コメントに関して現状は「自身の理解度、知識定着度」優先だが、開発現場想定では「他人(或いは半年後の自分)にとっての理解しやすさ」を優先する
 
 - [x] とにかく丁寧に学習モード
   - 学習速度や成果物作成進度は更に落ちるが、英語の学習(hearing, reading)を兼ね英語音声＋英語字幕で視聴する
@@ -98,15 +98,23 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
   - [x] ランドスケープモードではチャートを左、リストを右に表示する
   - [x] デバイスのサイズ(スマホ・タブレット・PC)
     - [x] ポートレートモードでも十分な幅があればチャートは左に表示
-  - [ ] デバイスのOS(Android・iOS・Web)
-- [ ] Building Adaptive Widgets
+- [x] Building Adaptive Widgets
+  - [x] デバイスのOS(Android・iOS・Web)
 
-## Section 7: [Todoapp]
+## Section 7: Flutter & Dart Internal[Todoapp]
 
-- [ ] 三つのツリー構造
-  - [ ] Widget Tree
-  - [ ] Element Tree
-  - [ ] Render Tree
+Flutterの内部構造を理解する(TodoAppはむしろ題材)
+
+- 開発者が直接意識するのはWidget Treeのみ
+- 記述したコード→メモリ最適化→差分の比較→最終的にUI描画
+- [x] 三つのツリー構造
+  - [x] Widget Tree
+  - [x] Element Tree
+  - [x] Render Tree
+- [ ] main(runApp), build, setStateの流れを舞台裏も含め理解する
+- [ ] Understanding the "key" property
+- [ ] Mutating Values **in Memory**
+- [ ] Make sense of _var_, final & const
 
 ## Sec8~10: [MealsApp]
 
