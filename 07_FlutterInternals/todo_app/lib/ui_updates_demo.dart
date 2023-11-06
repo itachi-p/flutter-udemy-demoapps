@@ -8,6 +8,10 @@ class UIUpdatesDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 外部切り出しにより、ボタンを押してもこのbuildメソッドは呼ばれなくなった。
+    // つまりFlutterが'Awesome!'テキスト1つの為に全Widgetの相違を確認する必要もなくなったという事
+    // システムがもっと複雑に(重く)なった場合、このような最適化は重要なパフォーマンスの差になってくる。
+    print('UIUpdatesDemo BUILD called');
     return const Padding(
       padding: EdgeInsets.all(8.0),
       child: Center(
