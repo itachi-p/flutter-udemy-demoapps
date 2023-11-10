@@ -78,7 +78,13 @@ class _KeysState extends State<Keys> {
                 // この理由は、widgetが移動(elementからのポインタ参照先が変わる)しても
                 // element及びstateはそのまま再利用される(移動しない)ため
                 // これを合わせるには、keyを使う
+                // widgetのkeyと、elementのkeyの紐付けによりstateの連動も可能になる
                 CheckableTodoItem(
+                  // 個々のTodoItem(のwidget及びelement)にkeyを設定
+                  // 改めてクラス定義に追加は不要。コンストラクタに常時{super.key}と書くのもこの為
+                  // もし一意なIDがあればそれを使う方が望ましいが、ここではtodo.textを使う
+                  key: ValueKey(todo.text), // これによりチェックボックスのstateも並び順と連動する
+                  // key: ObjectKey(todo), // これでもOKだが、オブジェクト全体になるので処理が重くなる
                   todo.text,
                   todo.priority,
                 ),
