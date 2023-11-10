@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_internals/keys/todo_item.dart';
 
+// データモデル
 class Todo {
   const Todo(this.text, this.priority);
 
@@ -20,6 +21,7 @@ class Keys extends StatefulWidget {
 
 class _KeysState extends State<Keys> {
   var _order = 'asc';
+  // ダミーデータ
   final _todos = [
     const Todo(
       'Learn Flutter',
@@ -36,6 +38,7 @@ class _KeysState extends State<Keys> {
   ];
 
   List<Todo> get _orderedTodos {
+    // 元のリストを変更しないようにコピーを作成してソート
     final sortedTodos = List.of(_todos);
     sortedTodos.sort((a, b) {
       final bComesAfterA = a.text.compareTo(b.text);
@@ -67,7 +70,7 @@ class _KeysState extends State<Keys> {
         Expanded(
           child: Column(
             children: [
-              // for (final todo in _orderedTodos) TodoItem(todo.text, todo.priority),
+              // {}波括弧無しループでリストに要素を追加（※前項参照）
               for (final todo in _orderedTodos)
                 TodoItem(
                   todo.text,
