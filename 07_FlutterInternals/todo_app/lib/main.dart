@@ -14,7 +14,7 @@ void main() {
   // constはいずれも不可。コンパイルエラーは出ないが、実行時エラーになる
   numbers.add(4);
   numbers[0] = 5;
-  print(numbers);
+  // print(numbers);
 
   runApp(const App());
 }

@@ -111,12 +111,14 @@ Flutterの内部構造を理解する(TodoAppはむしろ題材)
   - [x] Widget Tree
   - [x] Element Tree
   - [x] Render Tree
-- [ ] main(runApp), build, setStateの流れを舞台裏も含め理解する
-- [ ] Understanding the "key" property
-- [ ] Mutating Values **in Memory**
-- [ ] Make sense of _var_, final & const
+- [x] main(runApp), build, setStateの流れを舞台裏も含め理解する
+- [x] Understanding the "key" property
+- [x] Mutating Values **in Memory**
+- [x] Make sense of _var_, final & const
 
 ## Sec8~10: [MealsApp]
+
+### Sec8: Navigation & Multiple Screens
 
 - [ ] Page navigation with tabs, side drawers, and stack-based navigation
 - [ ] _Adding beautiful animations & page transitions_
