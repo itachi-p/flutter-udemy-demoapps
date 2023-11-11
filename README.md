@@ -101,7 +101,7 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [x] Building Adaptive Widgets
   - [x] デバイスのOS(Android・iOS・Web)
 
-## Section 7: Flutter & Dart Internal[Todoapp]
+## Section 7: Flutter & Dart Internal[TodoApp]
 
 Flutterの内部構造を理解する(TodoAppはむしろ題材)
 
@@ -121,6 +121,11 @@ Flutterの内部構造を理解する(TodoAppはむしろ題材)
 ### Sec8: Navigation & Multiple Screens
 
 - [ ] Page navigation with tabs, side drawers, and stack-based navigation
+
+### Sec9: Managing App-wide State
+
+### Sec10: Adding animations
+
 - [ ] _Adding beautiful animations & page transitions_
 
 ## Sec11: [ShoppingListApp1]
