@@ -16,6 +16,7 @@ class CategoriesScreen extends StatelessWidget {
       // ListViewと同じく、builderを使って動的に可視部分だけのウィジェット生成も可能
       // ここではそこまで長いGridにならずメモリ最適化の必要性は薄いので不要
       body: GridView(
+        padding: const EdgeInsets.all(24),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // 横方向(縦のGridに対するクロス軸)のウィジェット数
           childAspectRatio: 3 / 2, // ウィジェットの縦横比を動的に変更
@@ -24,8 +25,10 @@ class CategoriesScreen extends StatelessWidget {
         ),
         children: [
           // dummy_data.dartで定義したカテゴリーリストを使って動的に生成
+          // mapメソッドを使った場合と同じ挙動だが、ここではfor...in文を使う
+          // availableCategories.map((ctgry) => CategoryGridItem(category: ctgry)).toList(),
+
           for (final category in availableCategories)
-            // カテゴリのアイテムを表示するウィジェットにカテゴリのダミーデータを渡す
             CategoryGridItem(category: category),
         ],
       ),
