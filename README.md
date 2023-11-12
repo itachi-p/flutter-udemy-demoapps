@@ -120,6 +120,7 @@ Flutterの内部構造を理解する(TodoAppはむしろ題材)
 
 ### Sec8: Navigation & Multiple Screens
 
+- [x] Using GridView
 - [ ] Page navigation with tabs, side drawers, and stack-based navigation
 
 ### Sec9: Managing App-wide State
