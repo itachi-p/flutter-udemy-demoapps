@@ -75,7 +75,11 @@ A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS 
 - [ ] Running the app on a physical devices
   - [x] 以前(Flutter Ver.1で)Android, iPhone実機どっちもやった
   - [ ] On actual Android device
-  - [ ] On actual iOS device
+  - [x] On actual iOS device
+    - [x] 手持ちのiPhone Xrにて実機テスト
+      - プロジェクトごとにホームディレクトリにて`flutter build ios`を実行
+      - [x] XCode15.0.1からの実機テスト成功
+      - [x] VSCodeからの実機テスト成功(**こちらを優先使用**)
 
 ## Section 5: Adding Interactivity & Theming [ExpenseTrackerApp1]
 
