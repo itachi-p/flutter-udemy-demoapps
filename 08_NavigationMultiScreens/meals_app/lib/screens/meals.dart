@@ -19,10 +19,12 @@ class MealsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: 
-      // DUMMY: 仮のウィジェット
-      const Center(
-        child: Text('The meals for the category!'),
+      // スクロール可能、かつ動的に可視部分だけのウィジェット生成でパフォーマンス最適化
+      // itemBuilderプロパティには、contextとindexを引数にとり、ウィジェットを返す関数を渡す
+      body: ListView.builder(
+        itemBuilder: (cxt, index) => Text(
+          meals[index].title,
+        ),
       ),
     );
   }
