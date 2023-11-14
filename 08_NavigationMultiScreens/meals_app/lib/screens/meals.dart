@@ -16,6 +16,9 @@ class MealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // mealsの中身が空の場合に備え、場合分けする
     Widget content = ListView.builder(
+      // itemCountプロパティに、リストの要素数を渡す
+      // これがないと、ListViewを正しくレンダリングできない
+      itemCount: meals.length,
       itemBuilder: (cxt, index) => Text(
         meals[index].title,
       ),

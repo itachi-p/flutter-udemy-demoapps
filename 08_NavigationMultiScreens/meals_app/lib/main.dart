@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/meals.dart';
 
@@ -30,8 +31,8 @@ class App extends StatelessWidget {
       home: const MealsScreen(
         // とりあえずダミーのテキストをハードコーディングしておく
         title: 'Some category ...',
-        // fallbackコンテンツが正常に表示されるか確認する為に、空のリストを渡す
-        meals: [],
+        // dummyMealsの表示テスト
+        meals: dummyMeals,
       ),
     );
   }
