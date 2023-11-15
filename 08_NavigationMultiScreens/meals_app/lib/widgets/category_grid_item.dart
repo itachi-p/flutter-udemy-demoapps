@@ -6,16 +6,19 @@ class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem({
     super.key,
     required this.category,
+    required this.onSelectCategory,
   });
 
   final Category category;
+  // カテゴリーをタップした時の処理を外部(categories.dart)から受け取る
+  final void Function() onSelectCategory;
 
   @override
   Widget build(BuildContext context) {
     // Container以下をタップ可能にする為にInkWellでラップ
     // GestureDetectorでも様々なリスナーを設定できるが、InkWellは視覚的なフィードバックが付く
     return InkWell(
-      onTap: () {},
+      onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor, // タップ時の色効果
       borderRadius: BorderRadius.circular(16), // 角を丸くする
       child: Container(
