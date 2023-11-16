@@ -24,7 +24,8 @@ class MealItem extends StatelessWidget {
       // しかし、StackはデフォルトでCardのshape設定を無視するので、
       // 更にclipBehaviorプロパティを指定する必要がある
       clipBehavior: Clip.hardEdge, // これを指定しないと角が丸くならない
-
+      elevation: 2, // Cardの背後に影を付け、高低差と立体効果を出す
+      
       child: InkWell(
         onTap: () {},
         // Stackは子ウィジェットを下から順に重ねて表示する(画像の上にテキスト等)
