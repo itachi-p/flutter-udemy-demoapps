@@ -16,6 +16,15 @@ class MealItem extends StatelessWidget {
   Widget build(BuildContext context) {
     // 食事リスト中から特定の料理をタップして詳細画面に遷移できるようにする
     return Card(
+      margin: const EdgeInsets.all(8),
+      // Cardの角を指定の条件で丸くする
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      // しかし、StackはデフォルトでCardのshape設定を無視するので、
+      // 更にclipBehaviorプロパティを指定する必要がある
+      clipBehavior: Clip.hardEdge, // これを指定しないと角が丸くならない
+
       child: InkWell(
         onTap: () {},
         // Stackは子ウィジェットを下から順に重ねて表示する(画像の上にテキスト等)
@@ -27,6 +36,7 @@ class MealItem extends StatelessWidget {
             ),
             // 上の画像に重なる形で、どの範囲で配置するかを指定
             Positioned(
+              // 上の画像の下端、かつ幅は左右いっぱいに配置
               bottom: 0,
               left: 0,
               right: 0,
@@ -50,9 +60,7 @@ class MealItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Row(
-                      children: [
-                        
-                      ],
+                      children: [],
                     )
                   ],
                 ),
