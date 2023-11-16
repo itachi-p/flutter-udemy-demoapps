@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
@@ -22,7 +23,7 @@ class MealsScreen extends StatelessWidget {
       // これがないと、ListViewを正しくレンダリングできない
       itemCount: meals.length,
       // itemBuilderプロパティには、contextとindexを引数にとり、ウィジェットを返す関数を渡す
-      itemBuilder: (cxt, index) => Text(meals[index].title),
+      itemBuilder: (cxt, index) => MealItem(meal: meals[index]),
     );
 
     // mealsの中身が空の場合に備え、場合分けする
