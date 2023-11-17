@@ -63,6 +63,7 @@ class MealItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
+                    // TODO:メタデータ群を表示予定
                     Row(
                       children: [],
                     )
