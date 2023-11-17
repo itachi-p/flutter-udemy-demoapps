@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import 'package:meals_app/models/meal.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:meals_app/widgets/meal_item_trait.dart';
 
 // カテゴリー別料理リストの中の料理1件を表示するウィジェット
 class MealItem extends StatelessWidget {
@@ -63,9 +64,11 @@ class MealItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    // TODO:メタデータ群を表示予定
+                    // メタデータ群を表示
                     Row(
-                      children: [],
+                      children: [
+                        MealItemTrait(icon: Icons.schedule, label: meal.duration.toString()),
+                      ],
                     )
                   ],
                 ),
