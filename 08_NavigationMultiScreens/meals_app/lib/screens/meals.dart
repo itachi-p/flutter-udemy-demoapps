@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widgets/meal_item.dart';
+import 'package:meals_app/screens/meal_details.dart';
 
+// 選択された特定のカテゴリーに属する料理リストを表示する画面
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
     super.key,
@@ -14,20 +16,44 @@ class MealsScreen extends StatelessWidget {
   final String title;
   final List<Meal> meals;
 
-  // カテゴリー分類された料理リストを表示する画面
+  // 特定の料理がタップされた時の処理を実装
+  // Navigatorを使って、詳細画面に遷移する為に引数にcontextを追加
+  void selectMeal(BuildContext context, Meal meal) {
+    // 画面スタックの一番上に新しい画面を押し込む（その為にcontextが必要になる）
+    Navigator.of(context).push(
+      // pushにMealDetailsScreenを直接渡すのではなく、MaterialPageRouteで包む
+      MaterialPageRoute(
+        builder: (ctx) => MealDetailsScreen(
+          meal: meal,
+        ),
+      ),
+    );
+    // pushだけで自動的に戻るボタンも実装されるが、手動設定も可能
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // スクロール可能、かつ動的に可視部分だけのウィジェット生成でパフォーマンス最適化
-    Widget content = ListView.builder(
-      // itemCountプロパティに、リストの要素数を渡す
-      // これがないと、ListViewを正しくレンダリングできない
-      itemCount: meals.length,
-      // itemBuilderプロパティには、contextとindexを引数にとり、ウィジェットを返す関数を渡す
-      itemBuilder: (cxt, index) => MealItem(meal: meals[index]),
-    );
+    // 場合分け:mealsの中身の有無で、表示するウィジェットを変える
+    Widget content;
 
-    // mealsの中身が空の場合に備え、場合分けする
-    if (meals.isEmpty) {
+    // mealsリストが空でなければ、ListViewを生成する
+    if (meals.isNotEmpty) {
+      // スクロール可能かつ動的に可視部分だけのウィジェット生成によりパフォーマンス最適化
+      content = ListView.builder(
+        // itemCountプロパティにリストの要素数を渡さないと、正しくレンダリングできない
+        itemCount: meals.length,
+        // itemBuilderプロパティには、BuildContextとindexを引数にとりWidgetを返す関数を渡す
+        itemBuilder: (ctx, index) => MealItem(
+          meal: meals[index],
+          // onSelectMealプロパティに直接selectMeal関数を渡すのでなく、
+          // 匿名関数を間に挟むことで、引数にcontextも渡せるようにする
+          // こうすれば、MealItem内のonSelectMeal関数の引数にまでcontextを渡す必要がなくなる
+          onSelectMeal: (meal) => selectMeal(context, meal),
+        ),
+      );
+    } else {
+      // もしmealsリストが空の場合は、何もない旨を表示する
       content = Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

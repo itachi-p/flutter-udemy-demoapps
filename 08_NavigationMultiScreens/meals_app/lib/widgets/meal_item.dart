@@ -9,9 +9,16 @@ class MealItem extends StatelessWidget {
   const MealItem({
     super.key,
     required this.meal,
+    required this.onSelectMeal,
   });
 
   final Meal meal;
+  // 特定の料理がタップされた時の処理を実装
+  final void Function(Meal meal) onSelectMeal;
+  // Navigatorを使って画面遷移したい都合の為に、関数定義の引数にcontextを付け加えても良い
+  // しかし以下のように、呼び出し側で使えるcontextを渡しても機能は実現する。なので今回は含めない
+  // onTap: () => selectMeal(context, meal)
+  // final void Function(BuildContext context, Meal meal) onSelectMeal;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -38,7 +45,8 @@ class MealItem extends StatelessWidget {
       elevation: 2, // Cardの背後に影を付け、高低差と立体効果を出す
 
       child: InkWell(
-        onTap: () {},
+        // 引数を渡す必要が無い場合のみ、onTap: selectMeal と記述できる
+        onTap: () => onSelectMeal(meal),
         // Stackは子ウィジェットを下から順に重ねて表示する(画像の上にテキスト等)
         child: Stack(
           children: [
