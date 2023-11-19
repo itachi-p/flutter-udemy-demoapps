@@ -28,8 +28,6 @@ class MealsScreen extends StatelessWidget {
         ),
       ),
     );
-    // pushだけで自動的に戻るボタンも実装されるが、手動設定も可能
-    Navigator.pop(context);
   }
 
   @override
